@@ -1,0 +1,24 @@
+{
+  "name": "programming-coursework-using-node-js-oanguin",
+  "version": "1.0.0",
+  "description": "School project called bookface. For sharing books, liking books and all other related book activities.",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BBK-DCSIS-CBSD-EC-2018-19/programming-coursework-using-node-js-oanguin.git"
+  },
+  "author": "Oneal Anguin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BBK-DCSIS-CBSD-EC-2018-19/programming-coursework-using-node-js-oanguin/issues"
+  },
+  "homepage": "https://github.com/BBK-DCSIS-CBSD-EC-2018-19/programming-coursework-using-node-js-oanguin#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11"
+  }
+}

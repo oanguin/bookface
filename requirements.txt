@@ -1,0 +1,6 @@
+NPM Packages Used:
+    - Express
+    - BodyParser
+    - Lodash
+Minimum Requirements:
+    - Node v10.12.0 or Higher

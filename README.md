@@ -38,4 +38,4 @@ You can use any JavaScript based stack to complete this task but it must use `No
   
 ## Submission
 
-Your GitHub Classroom repository will be cloned on the due date at 23:59.
+Your GitHub Classroom repository will be cloned on the due date (`Sunday, 7th April by 23:55`) at 23:59.
