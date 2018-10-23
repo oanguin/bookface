@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-var _ = require("lodash");
+const _ = require("lodash");
+const morgan = require("morgan");
 
 const app = express();
 const port = 3000;
@@ -10,7 +11,10 @@ app.use(
     extended: true
   })
 );
+
 app.use(bodyParser.json());
+
+app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.send("Hi from book app.");
