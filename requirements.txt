@@ -2,5 +2,9 @@ NPM Packages Used:
     - Express
     - BodyParser
     - Lodash
+    - Morgan (https://github.com/expressjs/morgan)
+    - Path (https://node.readthedocs.io/en/latest/api/path/)
+    - fs (https://nodejs.org/api/fs.html)
+    - rfs (https://www.npmjs.com/package/file-stream-rotator)
 Minimum Requirements:
     - Node v10.12.0 or Higher
