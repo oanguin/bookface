@@ -1,10 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+<<<<<<< HEAD
 var _ = require("lodash");
 var morgan = require("morgan");
 var fs = require("fs");
 var path = require("path");
 var rfs = require("rotating-file-stream");
+=======
+const _ = require("lodash");
+const morgan = require("morgan");
+>>>>>>> 2d5d2da12cd7e573603ad06a51a569d55e224d1c
 
 const app = express();
 const port = 3000;
@@ -43,6 +48,8 @@ app.use(
 );
 
 app.use(bodyParser.json());
+
+app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.send("Hi from book app.");
