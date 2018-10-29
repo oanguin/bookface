@@ -1,18 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-<<<<<<< HEAD
 var _ = require("lodash");
 var morgan = require("morgan");
 var fs = require("fs");
 var path = require("path");
 var rfs = require("rotating-file-stream");
-=======
-const _ = require("lodash");
-const morgan = require("morgan");
->>>>>>> 2d5d2da12cd7e573603ad06a51a569d55e224d1c
 
 const app = express();
 const port = 3000;
+/* pug templating configuration*/
+app.set("view engine", "pug");
+app.set("views", `./client/views`);
+/*End pug configuration */
 
 /*Logging Configuration*/
 // log only 4xx and 5xx responses to console
@@ -114,8 +113,14 @@ app.patch(`/${AUTHOR}/:id`, (req, res) => {
     res.json(authors[existingAuthorIndex]);
   }
 });
-/*End of Author Rleated Endpoints*/
 
+/*End of Author Rleated Endpoints*/
+app.get("/show_authors", (req, res) => {
+  res.render("author/list", { data: authors });
+});
+/*Views*/
+
+/*End of Views */
 /*Middleware to catch all errors which are not managed.
 Note that the signiture with the error at the beginning is needed. */
 app.use((err, req, res, next) => {

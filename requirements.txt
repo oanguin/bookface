@@ -6,5 +6,6 @@ NPM Packages Used:
     - Path (https://node.readthedocs.io/en/latest/api/path/)
     - fs (https://nodejs.org/api/fs.html)
     - rfs (https://www.npmjs.com/package/file-stream-rotator)
+    - pug (https://github.com/pugjs/pug) : Front End Templating
 Minimum Requirements:
     - Node v10.12.0 or Higher
