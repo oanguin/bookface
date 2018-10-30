@@ -61,6 +61,10 @@ app.use(`/${AUTHOR}`, auhtors);
   res.render("index");
 });*/
 
+app.get("/test-template", (req, res) => {
+  res.render("test-template/index");
+});
+
 app.get("/show_authors", (req, res) => {
   res.render("author/list", { data: authors });
 });
