@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var Author = require("../models/author")
 
 /*Author Rleated Endpoints - Will need to be moved later*/
 
@@ -7,7 +8,7 @@ let authors = [];
 let id = 0;
 
 /*The Id will be added to the request body as req.body.id */
-var updateId = function(req, res, next) {
+var updateId = function (req, res, next) {
   id += 1;
   req.body.id = id + "";
   next();
@@ -29,12 +30,19 @@ router.get("/", (req, res) => {
 });
 
 /*Use updateId function to add id to req.body */
-router.post("/", updateId, (req, res) => {
-  let author = req.body;
+router.post("/", updateId, (req, res, next) => {
+  /*let author = req.body;
 
   authors.push(author);
   res.statusCode = 200;
-  res.send(author);
+  res.send(author);*/
+  delete req.body.id;
+  Author.create(req.body, (error, post) => {
+    if (error)
+      next(error);
+    else
+      res.json(post);
+  })
 });
 
 router.patch("/:id", (req, res) => {
@@ -62,7 +70,15 @@ router.patch("/:id", (req, res) => {
 
 /*Start Views */
 router.get("/test-template", (req, res) => {
-  res.render("index", { data: authors });
+  Author.find((error, authors) => {
+    console.log('Authors Found:' + authors)
+    if (error)
+      next(error)
+    else
+      res.render("index", {
+        data: authors
+      })
+  });
 });
 /*End Views */
 

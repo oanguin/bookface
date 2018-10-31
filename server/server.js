@@ -6,9 +6,18 @@ var fs = require("fs");
 var path = require("path");
 var rfs = require("rotating-file-stream");
 var auhtors = require("./author/authors");
+var mongoose = require("mongoose");
 
 const app = express();
 const port = 3000;
+
+/*START MongoDB */
+mongoose.Promise = global.Promise;
+mongoose
+  .connect("mongodb://localhost/bookface")
+  .then(() => console.log("Database connection succesful"))
+  .catch(err => console.error(err));
+/*END MongoDB */
 /* pug templating configuration*/
 app.set("view engine", "pug");
 app.set("views", `./client`);
@@ -18,7 +27,7 @@ app.set("views", `./client`);
 // log only 4xx and 5xx responses to console
 app.use(
   morgan("dev", {
-    skip: function(req, res) {
+    skip: function (req, res) {
       return res.statusCode < 400;
     }
   })
@@ -62,11 +71,15 @@ app.use(`/${AUTHOR}`, auhtors);
 });*/
 
 app.get("/test-template", (req, res) => {
-  res.render("test-template/index", { data: authors });
+  res.render("test-template/index", {
+    data: authors
+  });
 });
 
 app.get("/show_authors", (req, res) => {
-  res.render("author/list", { data: authors });
+  res.render("author/list", {
+    data: authors
+  });
 });
 /*End of Views */
 

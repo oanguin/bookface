@@ -1,4 +1,5 @@
 mixin author_vw(data)
+    h2 In Author Mixin
     if data
-        each  author in data
-            p= author.name
+        each author in data
+            p= author.first_name
