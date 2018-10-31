@@ -1,0 +1,142 @@
+include ./mixins/author_list
+include ./mixins/head
+include ./mixins/navigation
+include ./mixins/slider
+include ./mixins/top-books-slide
+
++head
+.gtco-loader
+#page
+	+navigation
+	//+slider	
+	+top-books-slide
+	.gtco-section
+		.gtco-container
+			.row
+				.col-md-6.gtco-news
+					h2 Test Authors
+					+author_vw(data)
+					h2 News
+					ul
+						li
+							a(href='#')
+								span.post-date September 10, 2016
+								h3 Manila Bridge Re-construction
+								p
+						li
+							a(href='#')
+								span.post-date September 10, 2016
+								h3 Manila Bridge Re-construction
+								p
+						li
+							a(href='#')
+								span.post-date September 10, 2016
+								h3 Manila Bridge Re-construction
+								p
+					p
+						a.btn.btn-sm.btn-special(href='#') More News
+				// END News
+				.col-md-5.col-md-push-1.gtco-testimonials
+					h2 Testimonials
+					blockquote
+						p
+						p.author
+							cite &mdash; John Doe Dueller
+					blockquote
+						p
+						p.author
+							cite &mdash; John Doe Dueller
+	// END
+	.gtco-section.gto-features
+		.gtco-container
+			.row
+				.col-md-4
+					.feature-left
+						i.ti-zip.icon
+						.copy
+							h3 Architect
+							p Lorem ipsum dolor sit ameteista, consectetur adipiscing is not elitistaris.
+							p
+								a.gtco-more(href='#') Learn more
+				.col-md-4
+					.feature-left
+						i.ti-hummer.icon
+						.copy
+							h3 Planning
+							p Lorem ipsum dolor sit ameteista, consectetur adipiscing is not elitistaris.
+							p
+								a.gtco-more(href='#') Learn more
+				.col-md-4
+					.feature-left
+						i.ti-plug.icon
+						.copy
+							h3 Parks &amp; Events
+							p Lorem ipsum dolor sit ameteista, consectetur adipiscing is not elitistaris.
+							p
+								a.gtco-more(href='#') Learn more
+	footer#gtco-footer.gtco-section(role='contentinfo')
+		.gtco-container
+			.row.row-pb-md
+				.col-md-4.gtco-widget.gtco-footer-paragraph
+					h3 Beryllium
+					p
+				.col-md-4
+					.row
+						.col-md-6.gtco-footer-link
+							h3 Links
+							ul.gtco-list-link
+								li
+									a(href='#') Home
+								li
+									a(href='#') Features
+								li
+									a(href='#') Products
+								li
+									a(href='#') Testimonial
+								li
+									a(href='#') Contact
+						.col-md-6.gtco-footer-link
+							h3 Work
+							ul.gtco-list-link
+								li
+									a(href='#') New York Arena
+								li
+									a(href='#') Eagle Park
+								li
+									a(href='#') Nationals Park
+								li
+									a(href='#') Manila Park
+				.col-md-4.gtco-footer-subscribe
+					form.form-inline
+						.form-group
+							label.sr-only(for='exampleInputEmail3') Email address
+							input.form-control(type='email', id='', placeholder='Email')
+						button.btn.btn-primary(type='submit') Send
+		.gtco-copyright
+			.gtco-container
+				.row
+					.col-md-6.text-left
+						p
+							small &copy; 2016 Free HTML5. All Rights Reserved. 
+					.col-md-6.text-right
+						p
+							small
+								a(href='http://gettemplates.co/', target='_blank') GetTemplates.co
+								a(href='http://pixeden.com/', target='_blank') Pixeden
+								a(href='http://unsplash.com', target='_blank') Unsplash
+	// END footer
+.gototop.js-top
+	a.js-gotop(href='#')
+		i.icon-arrow-up
+// jQuery
+script(src='/js/jquery.min.js')
+// jQuery Easing
+script(src='/js/jquery.easing.1.3.js')
+// Bootstrap
+script(src='/js/bootstrap.min.js')
+// Waypoints
+script(src='/js/jquery.waypoints.min.js')
+// Carousel
+script(src='/js/owl.carousel.min.js')
+// Main
+script(src='/js/main.js')

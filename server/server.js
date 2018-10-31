@@ -11,7 +11,7 @@ const app = express();
 const port = 3000;
 /* pug templating configuration*/
 app.set("view engine", "pug");
-app.set("views", `./client/views`);
+app.set("views", `./client`);
 /*End pug configuration */
 
 /*Logging Configuration*/
@@ -62,7 +62,7 @@ app.use(`/${AUTHOR}`, auhtors);
 });*/
 
 app.get("/test-template", (req, res) => {
-  res.render("test-template/index");
+  res.render("test-template/index", { data: authors });
 });
 
 app.get("/show_authors", (req, res) => {

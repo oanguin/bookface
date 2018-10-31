@@ -60,5 +60,11 @@ router.patch("/:id", (req, res) => {
   }
 });
 
+/*Start Views */
+router.get("/test-template", (req, res) => {
+  res.render("index", { data: authors });
+});
+/*End Views */
+
 module.exports = router;
 /*End of Author Rleated Endpoints*/
