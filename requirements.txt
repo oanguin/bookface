@@ -8,6 +8,7 @@ NPM Packages Used:
     - rfs (https://www.npmjs.com/package/file-stream-rotator)
     - pug (https://github.com/pugjs/pug) : Front End Templating
     - node-restful (https://github.com/baugarten/node-restful)
+    - plantuml (http://plantuml.com/, https://github.com/qjebbs/vscode-plantuml)
 Credits
     - Template from (https://www.free-css.com/free-css-templates/page228/beryllium)
 Minimum Requirements:
