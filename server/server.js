@@ -5,8 +5,11 @@ var morgan = require("morgan");
 var fs = require("fs");
 var path = require("path");
 var rfs = require("rotating-file-stream");
-var auhtors = require("./author/authors");
+var authors = require("./routers/authors");
 var mongoose = require("mongoose");
+var Author = require("./models/author")
+methodOverride = require('method-override')
+var restful = require('node-restful')
 
 const app = express();
 const port = 3000;
@@ -57,12 +60,19 @@ app.use(
 );
 
 app.use(bodyParser.json());
+app.use(methodOverride());
 
 app.use(morgan("dev"));
 
 /*START Rest End Point Routes*/
 const AUTHOR = "authors";
-app.use(`/${AUTHOR}`, auhtors);
+//app.use(`/${AUTHOR}`, authors);
+//app.use(authors);
+/*var Resource = app.resource = restful.model('resource', Author)
+  .methods(['get', 'post', 'put', 'delete']);
+
+Resource.register(app, '/authors');*/
+app.use('/api', authors);
 /*END of End Point Routes*/
 
 /*START Views*/
@@ -77,8 +87,14 @@ app.get("/test-template", (req, res) => {
 });
 
 app.get("/show_authors", (req, res) => {
-  res.render("author/list", {
-    data: authors
+  Author.find((error, authors) => {
+    console.log('Authors Found Really:' + authors)
+    if (error)
+      next(error)
+    else
+      res.render("index", {
+        data: authors
+      })
   });
 });
 /*End of Views */
