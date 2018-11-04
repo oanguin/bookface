@@ -10,6 +10,7 @@ var mongoose = require("mongoose");
 var Author = require("./models/author")
 methodOverride = require('method-override')
 var restful = require('node-restful')
+var loginRouter = require("./routers/login")
 
 const app = express();
 const port = 3000;
@@ -73,12 +74,20 @@ const AUTHOR = "authors";
 
 Resource.register(app, '/authors');*/
 app.use('/api', authors);
+app.use('/api', loginRouter);
 /*END of End Point Routes*/
 
 /*START Views*/
-/*app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.render("index");
-});*/
+});
+
+app.get("/books", (req, res) => {
+
+  res.render("books", {
+    authors: ["polo", "ming"]
+  });
+});
 
 app.get("/test-template", (req, res) => {
   res.render("test-template/index", {

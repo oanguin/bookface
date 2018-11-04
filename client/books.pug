@@ -7,20 +7,12 @@ include ./mixins/news
 include ./mixins/features
 include ./mixins/footer
 include ./mixins/bottom-loader
-include ./mixins/login
+include ./mixins/create-book
 
 +head
 .gtco-loader
 #page
-	if user
-		+navigation
-		//+slider
-		+top-books-slide
-		+news
-		+features
-		+footer
-	else
-		+navigation
-		+login
-		+footer
+	+navigation
+	+create-book
+	+footer
 +bottom-loader

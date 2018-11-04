@@ -1639,4 +1639,8 @@ blockquote p > cite {
   background: #4d4d4d;
 }
 
+.error {
+  color:red !important;
+}
+
 /*# sourceMappingURL=style.css.map */

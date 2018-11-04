@@ -1,0 +1,16 @@
+mixin create-author(author,index)
+    .gtco-section
+        .gtco-container
+            .row.gtco-heading
+                .col-lg-11.col-centered
+                    h2 Create Author
+                    if error
+                        h3(class="error")= error
+            .row
+                .col-lg-11.col-centered
+                    .form-group
+                        label(for='first_name') First Name:
+                        input(type="text" name=`author[${index}].first_name` class="form-control" placeholder="First Name")
+                    .form-group
+                        label(for='last_name') Last Name:
+                        input(type="last_name" name=`author[${index}].last_name` class="form-control" placeholder="Last Name")
