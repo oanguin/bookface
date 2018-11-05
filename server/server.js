@@ -11,6 +11,7 @@ var Author = require("./models/author")
 methodOverride = require('method-override')
 var restful = require('node-restful')
 var loginRouter = require("./routers/login")
+var bookRouter = require("./routers/book")
 
 const app = express();
 const port = 3000;
@@ -74,6 +75,7 @@ const AUTHOR = "authors";
 
 Resource.register(app, '/authors');*/
 app.use('/api', authors);
+app.use('/api', bookRouter);
 app.use('/api', loginRouter);
 /*END of End Point Routes*/
 
@@ -83,9 +85,19 @@ app.get("/", (req, res) => {
 });
 
 app.get("/books", (req, res) => {
-
+  let authors = [{
+      first_name: "",
+      last_name: "",
+      age: 0
+    },
+    {
+      first_name: "",
+      last_name: "",
+      age: 0
+    }
+  ]
   res.render("books", {
-    authors: ["polo", "ming"]
+    authors: authors
   });
 });
 

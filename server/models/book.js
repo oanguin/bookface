@@ -1,10 +1,15 @@
-var mongoose = require("mongoose")
-var Author = require("author")
+var express = require('express');
+var restful = require('node-restful');
+var mongoose = restful.mongoose;
+var Author = require('./author')
 
 var BookSchema = new mongoose.Schema({
-    authors: [Author],
+    authors: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Author'
+    }],
     title: String,
-    pages: Int8Array,
+    pages: Number,
     created_at: {
         type: Date,
         default: Date.now
@@ -15,4 +20,4 @@ var BookSchema = new mongoose.Schema({
     }
 });
 
-module.exports = BookSchema;
+module.exports = restful.model("Book", BookSchema)
