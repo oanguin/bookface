@@ -85,19 +85,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/books", (req, res) => {
-  let authors = [{
-      first_name: "",
-      last_name: "",
-      age: 0
-    },
-    {
-      first_name: "",
-      last_name: "",
-      age: 0
-    }
-  ]
+  /*Add at least one author to book [{}]*/
   res.render("books", {
-    authors: authors
+    authors: [{}]
   });
 });
 
