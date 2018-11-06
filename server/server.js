@@ -12,9 +12,13 @@ methodOverride = require('method-override')
 var restful = require('node-restful')
 var loginRouter = require("./routers/login")
 var bookRouter = require("./routers/book")
+const config = require("./config")
 
 const app = express();
-const port = 3000;
+//const port = 3000;
+
+// Set default node environment to development 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 /*START MongoDB */
 mongoose.Promise = global.Promise;
@@ -22,6 +26,7 @@ mongoose
   .connect("mongodb://localhost/bookface")
   .then(() => console.log("Database connection succesful"))
   .catch(err => console.error(err));
+
 /*END MongoDB */
 /* pug templating configuration*/
 app.set("view engine", "pug");
@@ -118,4 +123,11 @@ app.use((err, req, res, next) => {
   res.json(`Error: ${err}`);
 });
 
-app.listen(port, () => console.log(`Listening on ${port}`));
+/*Only start server if not running tests */
+if (require.main === module) {
+  app.listen(config.port, config.ip, function () {
+    console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+  });
+}
+
+module.exports = app;

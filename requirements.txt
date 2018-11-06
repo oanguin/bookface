@@ -9,6 +9,7 @@ NPM Packages Used:
     - pug (https://github.com/pugjs/pug) : Front End Templating
     - node-restful (https://github.com/baugarten/node-restful)
     - plantuml (http://plantuml.com/, https://github.com/qjebbs/vscode-plantuml)
+    - tape : Unit and Integration Testing (https://github.com/substack/tape)
 Credits
     - Template from (https://www.free-css.com/free-css-templates/page228/beryllium)
 Minimum Requirements:
