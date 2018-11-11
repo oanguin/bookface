@@ -4,7 +4,7 @@
   "description": "School project called bookface. For sharing books, liking books and all other related book activities.",
   "main": "server/server.js",
   "scripts": {
-    "test": "NODE_ENV=test node test/*.js | tap-spec",
+    "test": "NODE_ENV=test tape test/**/*.js | tap-spec",
     "start": "nodemon server/server"
   },
   "repository": {

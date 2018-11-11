@@ -24,6 +24,8 @@ class User{
     String user_name
     String password
     String email
+    Boolean is_registered
+    Boolean is_admin
     Date create_date
     Date update_date
 }

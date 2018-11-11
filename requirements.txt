@@ -14,3 +14,6 @@ Credits
     - Template from (https://www.free-css.com/free-css-templates/page228/beryllium)
 Minimum Requirements:
     - Node v10.12.0 or Higher
+TODO:
+    Add JWT Web Tokens to create user requests
+    Add Create User flow to start page of application

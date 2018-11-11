@@ -12,6 +12,5 @@ test('GET /authors', function (assert) {
             assert.isNotEqual(res.body, null, "Should not be Equal.");
             assert.error(err, 'No error');
             assert.end();
-            process.exit(0);
         });
 });

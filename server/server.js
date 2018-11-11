@@ -6,6 +6,7 @@ var fs = require("fs");
 var path = require("path");
 var rfs = require("rotating-file-stream");
 var authors = require("./routers/authors");
+var userRouter = require("./routers/user");
 var mongoose = require("mongoose");
 var Author = require("./models/author")
 methodOverride = require('method-override')
@@ -82,6 +83,7 @@ Resource.register(app, '/authors');*/
 app.use('/api', authors);
 app.use('/api', bookRouter);
 app.use('/api', loginRouter);
+app.use('/api', userRouter);
 /*END of End Point Routes*/
 
 /*START Views*/
