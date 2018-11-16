@@ -2,7 +2,9 @@ var test = require("tape");
 var request = require("supertest");
 var app = require("../server/server");
 
-let created_user_id = null;
+let CREATED_USER_ID = null;
+let CREATED_USER_PASSWORD = "123456";
+let CREATED_USER_EMAIL = "testuser@email.com";
 
 test("GET /user", function(assert) {
   request(app)
@@ -38,8 +40,8 @@ test("POST /user", function(assert) {
       middle_name: "test_middle_name",
       user_name: "test_user_name",
       age: 9,
-      password: "123456",
-      email: "test_email"
+      password: CREATED_USER_PASSWORD,
+      email: CREATED_USER_EMAIL
     })
     .expect(201)
     .expect("Content-Type", /json/)
@@ -62,8 +64,7 @@ test("POST /user", function(assert) {
         undefined,
         "Id should come back in the request"
       );
-      created_user_id = res.body._id;
-      console.log("User Id Created", created_user_id);
+      CREATED_USER_ID = res.body._id;
       assert.error(err, "No error");
       assert.end();
     });
@@ -71,14 +72,14 @@ test("POST /user", function(assert) {
 
 test("PUT /user/:_id", function(assert) {
   request(app)
-    .put(`/api/user/${created_user_id}`)
+    .put(`/api/user/${CREATED_USER_ID}`)
     .send({
       first_name: "new_test_name"
     })
     .expect(200)
     .expect("Content-Type", /json/)
     .end(function(err, res) {
-      console.log("User Id Created", created_user_id);
+      console.log("User Id Created", CREATED_USER_ID);
       assert.isNotEqual(res.body, null, "Should not be Equal.");
       /*Password and is_admin should not be returned in request */
       assert.isEqual(
@@ -96,9 +97,30 @@ test("PUT /user/:_id", function(assert) {
     });
 });
 
+/*Try Logging In with User - JWT Header should be returned x-access-token*/
+test("LOGIN /user/login", assert => {
+  request(app)
+    .post(`/api/user/login`)
+    .send({
+      email: CREATED_USER_EMAIL,
+      password: CREATED_USER_PASSWORD
+    })
+    .expect(200)
+    .end((err, res) => {
+      assert.isNotEqual(
+        res.get("x-access-token"),
+        null,
+        "Should not be Equal."
+      );
+
+      assert.error(err, "No error");
+      assert.end();
+    });
+});
+
 test("DELETE /user/:id", function(assert) {
   request(app)
-    .delete(`/api/user/${created_user_id}`)
+    .delete(`/api/user/${CREATED_USER_ID}`)
     .expect(204)
     .expect("Content-Type", /json/)
     .end(function(err, res) {

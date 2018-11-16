@@ -19,9 +19,11 @@
   "homepage": "https://github.com/BBK-DCSIS-CBSD-EC-2018-19/programming-coursework-using-node-js-oanguin#readme",
   "dependencies": {
     "async": "^2.6.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "method-override": "^3.0.0",
     "mongoose": "^5.3.8",
