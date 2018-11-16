@@ -41,9 +41,11 @@ You can use any JavaScript based stack to complete this task but it must use `No
 Your GitHub Classroom repository will be cloned on the due date (`Sunday, 7th April by 23:55`) at 23:59.
 
 ## Running Application
-1. npm install
-2. npm start
-3. Browse to localhost:3000
+1. npm install tap-spec -g
+1. npm install tape -g
+2. npm install
+3. npm start
+4. Browse to localhost:3000
 
 ## Testing Application
 1. npm test

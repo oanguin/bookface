@@ -8,23 +8,24 @@ var rfs = require("rotating-file-stream");
 var authors = require("./routers/authors");
 var userRouter = require("./routers/user");
 var mongoose = require("mongoose");
-var Author = require("./models/author")
-methodOverride = require('method-override')
-var restful = require('node-restful')
-var loginRouter = require("./routers/login")
-var bookRouter = require("./routers/book")
-const config = require("./config")
+var Author = require("./models/author");
+methodOverride = require("method-override");
+var restful = require("node-restful");
+var loginRouter = require("./routers/login");
+var bookRouter = require("./routers/book");
+const config = require("./config");
 
 const app = express();
 //const port = 3000;
 
-// Set default node environment to development 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
 /*START MongoDB */
 mongoose.Promise = global.Promise;
 mongoose
-  .connect("mongodb://localhost/bookface")
+  //.connect("mongodb://localhost/bookface")
+  .connect(config.database)
   .then(() => console.log("Database connection succesful"))
   .catch(err => console.error(err));
 
@@ -38,7 +39,7 @@ app.set("views", `./client`);
 // log only 4xx and 5xx responses to console
 app.use(
   morgan("dev", {
-    skip: function (req, res) {
+    skip: function(req, res) {
       return res.statusCode < 400;
     }
   })
@@ -80,10 +81,10 @@ const AUTHOR = "authors";
   .methods(['get', 'post', 'put', 'delete']);
 
 Resource.register(app, '/authors');*/
-app.use('/api', authors);
-app.use('/api', bookRouter);
-app.use('/api', loginRouter);
-app.use('/api', userRouter);
+app.use("/api", authors);
+app.use("/api", bookRouter);
+app.use("/api", loginRouter);
+app.use("/api", userRouter);
 /*END of End Point Routes*/
 
 /*START Views*/
@@ -106,13 +107,12 @@ app.get("/test-template", (req, res) => {
 
 app.get("/show_authors", (req, res) => {
   Author.find((error, authors) => {
-    console.log('Authors Found Really:' + authors)
-    if (error)
-      next(error)
+    console.log("Authors Found Really:" + authors);
+    if (error) next(error);
     else
       res.render("index", {
         data: authors
-      })
+      });
   });
 });
 /*End of Views */
@@ -127,8 +127,12 @@ app.use((err, req, res, next) => {
 
 /*Only start server if not running tests */
 if (require.main === module) {
-  app.listen(config.port, config.ip, function () {
-    console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+  app.listen(config.port, config.ip, function() {
+    console.log(
+      "Express server listening on %d, in %s mode",
+      config.port,
+      app.get("env")
+    );
   });
 }
 
