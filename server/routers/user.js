@@ -8,23 +8,23 @@ User.before("post", EncryptPassword).before("put", EncryptPassword);
 User.after("get", removeSensitiveData)
   .after("post", removeSensitiveData)
   .after("put", removeSensitiveData)
-  .after("register", removeSensitiveData);
+  .after("register", removeSensitiveData)
+  .after("login", removeSensitiveData);
 
 User.route("login", (req, res, next) => {
   console.log("Trying to Login..", req.body);
-  User.findOne(
-    {
+  User.findOne({
       email: "testuser@email.com"
     },
     (error, user) => {
       if (user && Security.isPasswordValid(req.body.password, user.password)) {
         res.setHeader(
           "x-access-token",
-          Security.generateJWT({ id: user._id.toString() })
+          Security.generateJWT({
+            id: user._id.toString()
+          })
         );
-        res.status(200).send({
-          "x-access-token": Security.generateJWT({ id: user._id.toString() })
-        });
+        res.status(200).send(user);
       } else {
         res.status(404).send("Please provide a valid user name and password.");
       }
@@ -34,7 +34,7 @@ User.route("login", (req, res, next) => {
 
 User.route("registration", {
   detail: true,
-  handler: function(req, res, next) {
+  handler: function (req, res, next) {
     console.log("Register Mehtod...");
     User.findById(req.params.id, (err, user) => {
       if (user) {

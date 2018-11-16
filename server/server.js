@@ -7,6 +7,7 @@ var path = require("path");
 var rfs = require("rotating-file-stream");
 var authors = require("./routers/authors");
 var userRouter = require("./routers/user");
+var userController = require("./controllers/user");
 var mongoose = require("mongoose");
 var Author = require("./models/author");
 methodOverride = require("method-override");
@@ -39,7 +40,7 @@ app.set("views", `./client`);
 // log only 4xx and 5xx responses to console
 app.use(
   morgan("dev", {
-    skip: function(req, res) {
+    skip: function (req, res) {
       return res.statusCode < 400;
     }
   })
@@ -83,8 +84,9 @@ const AUTHOR = "authors";
 Resource.register(app, '/authors');*/
 app.use("/api", authors);
 app.use("/api", bookRouter);
-app.use("/api", loginRouter);
+//app.use("/api", loginRouter);
 app.use("/api", userRouter);
+app.use("/", userController);
 /*END of End Point Routes*/
 
 /*START Views*/
@@ -127,7 +129,7 @@ app.use((err, req, res, next) => {
 
 /*Only start server if not running tests */
 if (require.main === module) {
-  app.listen(config.port, config.ip, function() {
+  app.listen(config.port, config.ip, function () {
     console.log(
       "Express server listening on %d, in %s mode",
       config.port,

@@ -8,7 +8,7 @@ mixin login
                         h3(class="error")= error
             .row
                 .col-lg-11.col-centered
-                    form(action="/api/login" method="POST")
+                    form(action="/login" method="POST")
                         .form-group
                             label(for='user_name') User Name:
                             input(type="text" name="user_name" class="form-control" placeholder="User Name")

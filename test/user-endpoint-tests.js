@@ -6,12 +6,12 @@ let CREATED_USER_ID = null;
 let CREATED_USER_PASSWORD = "123456";
 let CREATED_USER_EMAIL = "testuser@email.com";
 
-test("GET /user", function(assert) {
+test("GET /user", function (assert) {
   request(app)
     .get("/api/user")
     .expect(200)
     .expect("Content-Type", /json/)
-    .end(function(err, res) {
+    .end(function (err, res) {
       assert.isNotEqual(res.body, null, "Should not be Equal.");
       /*Password and is_admin should not be returned in request */
       res.body.forEach(element => {
@@ -31,7 +31,7 @@ test("GET /user", function(assert) {
     });
 });
 
-test("POST /user", function(assert) {
+test("POST /user", function (assert) {
   request(app)
     .post("/api/user")
     .send({
@@ -45,7 +45,7 @@ test("POST /user", function(assert) {
     })
     .expect(201)
     .expect("Content-Type", /json/)
-    .end(function(err, res) {
+    .end(function (err, res) {
       assert.isNotEqual(res.body, null, "Should not be Equal.");
       /*Password and is_admin should not be returned in request */
       assert.isEqual(
@@ -70,7 +70,7 @@ test("POST /user", function(assert) {
     });
 });
 
-test("PUT /user/:_id", function(assert) {
+test("PUT /user/:_id", function (assert) {
   request(app)
     .put(`/api/user/${CREATED_USER_ID}`)
     .send({
@@ -78,7 +78,7 @@ test("PUT /user/:_id", function(assert) {
     })
     .expect(200)
     .expect("Content-Type", /json/)
-    .end(function(err, res) {
+    .end(function (err, res) {
       console.log("User Id Created", CREATED_USER_ID);
       assert.isNotEqual(res.body, null, "Should not be Equal.");
       /*Password and is_admin should not be returned in request */
@@ -127,16 +127,6 @@ test("LOGIN /user/:id/registration", assert => {
       assert.isEqual(res.body.is_registered, true, "Should be rgistered.");
 
       assert.error(err, "No error");
-      assert.end();
-    });
-});
-
-test("DELETE /user/:id", function(assert) {
-  request(app)
-    .delete(`/api/user/${CREATED_USER_ID}`)
-    .expect(204)
-    .expect("Content-Type", /json/)
-    .end(function(err, res) {
       assert.end();
     });
 });
