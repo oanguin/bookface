@@ -7,7 +7,8 @@ User = User.methods(["get", "post", "put", "delete"]);
 User.before("post", EncryptPassword).before("put", EncryptPassword);
 User.after("get", removeSensitiveData)
   .after("post", removeSensitiveData)
-  .after("put", removeSensitiveData);
+  .after("put", removeSensitiveData)
+  .after("register", removeSensitiveData);
 
 User.route("login", (req, res, next) => {
   console.log("Trying to Login..", req.body);
@@ -31,9 +32,22 @@ User.route("login", (req, res, next) => {
   );
 });
 
-/*User.route("login", function(req, res, next) {
-  res.send("I have a recommendation for you!");
-});*/
+User.route("registration", {
+  detail: true,
+  handler: function(req, res, next) {
+    console.log("Register Mehtod...");
+    User.findById(req.params.id, (err, user) => {
+      if (user) {
+        user.is_registered = true;
+        user.save((err, updatedUser) => {
+          res.status(200).json(updatedUser);
+        });
+      } else {
+        res.status(404).send("User is not registered.");
+      }
+    });
+  }
+});
 
 User.register(router, "/user");
 
