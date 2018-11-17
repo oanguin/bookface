@@ -15,9 +15,41 @@ var restful = require("node-restful");
 var loginRouter = require("./routers/login");
 var bookRouter = require("./routers/book");
 const config = require("./config");
+const cookieParser = require("cookie-parser");
+var jwt = require("express-jwt");
+var unless = require("express-unless");
+var url = require("url");
+var path = require("path");
+
+const USER_UNAUTHORIZED_ERROR_MESSAGE = "User Unathorized";
 
 const app = express();
-//const port = 3000;
+app.use(cookieParser());
+
+/*Parse token from request as needed. */
+app.use(
+  jwt({
+    secret: config.secret,
+    credentialsRequired: false,
+    getToken: function fromHeaderOrCookie(req) {
+      if (req.headers["x-access-token"]) {
+        return req.headers["x-access-token"];
+      } else if (req.cookies.x_access_token) {
+        return req.cookies.x_access_token;
+      } else {
+        throw Error(USER_UNAUTHORIZED_ERROR_MESSAGE);
+      }
+    },
+    function (req, res) {
+      res.render("/index");
+    }
+  }).unless(function (req) {
+    var ext = path.extname(req.originalUrl);
+    var returned = !!~config.authUrlExceptions.indexOf(ext);
+    returned = returned || (req.originalUrl.indexOf('login') > 0);
+    return returned;
+  })
+);
 
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
@@ -63,6 +95,7 @@ app.use(
 );
 /*End of Logging Configuration*/
 app.use(express.static("client"));
+
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -123,8 +156,14 @@ app.get("/show_authors", (req, res) => {
 Note that the signiture with the error at the beginning is needed. */
 app.use((err, req, res, next) => {
   console.log(`Error Caught.${err}`);
-  res.statusCode = 503;
-  res.json(`Error: ${err}`);
+  if (err.message == USER_UNAUTHORIZED_ERROR_MESSAGE) {
+    console.log(`Error Caught. Rendering Index`);
+    res.render("index");
+  } else {
+    console.log(`Error Caught. Rendering 503`);
+    res.statusCode = 503;
+    res.json(`Error: ${err}`);
+  }
 });
 
 /*Only start server if not running tests */

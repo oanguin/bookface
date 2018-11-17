@@ -23,7 +23,10 @@ router.post("/login", (req, response, next) => {
         })
         .then(payload => {
             response.set('x-access-token', payload.xaccesstoken)
-            response.cookie('x-access-token', payload.xaccesstoken)
+            /*Expire the cookie in 24 hours */
+            response.cookie("x_access_token", payload.xaccesstoken, {
+                maxAge: 24 * 60 * 60 * 1000
+            });
             response.render("index", {
                 user: payload.body
             });

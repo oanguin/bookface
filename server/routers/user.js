@@ -12,7 +12,7 @@ User.after("get", removeSensitiveData)
   .after("login", removeSensitiveData);
 
 User.route("login", (req, res, next) => {
-  console.log("Trying to Login..", req.body);
+  //console.log("Trying to Login..", req.body);
   User.findOne({
       email: "testuser@email.com"
     },
@@ -20,9 +20,7 @@ User.route("login", (req, res, next) => {
       if (user && Security.isPasswordValid(req.body.password, user.password)) {
         res.setHeader(
           "x-access-token",
-          Security.generateJWT({
-            id: user._id.toString()
-          })
+          Security.generateJWT(user.toJSON())
         );
         res.status(200).send(user);
       } else {
@@ -35,7 +33,7 @@ User.route("login", (req, res, next) => {
 User.route("registration", {
   detail: true,
   handler: function (req, res, next) {
-    console.log("Register Mehtod...");
+    //console.log("Register Mehtod...");
     User.findById(req.params.id, (err, user) => {
       if (user) {
         user.is_registered = true;
