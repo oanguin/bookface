@@ -1,3 +1,6 @@
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || "prod";
+
 const express = require("express");
 const bodyParser = require("body-parser");
 var _ = require("lodash");
@@ -14,7 +17,7 @@ methodOverride = require("method-override");
 var restful = require("node-restful");
 var loginRouter = require("./routers/login");
 var bookRouter = require("./routers/book");
-const config = require("./config");
+const config = process.env.NODE_ENV == "test" ? require("./config/config-test") : require("./config/config");
 const cookieParser = require("cookie-parser");
 var jwt = require("express-jwt");
 var unless = require("express-unless");
@@ -51,9 +54,6 @@ app.use(cookieParser());
     return returned;
   })
 );*/
-
-// Set default node environment to development
-process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
 /*START MongoDB */
 mongoose.Promise = global.Promise;

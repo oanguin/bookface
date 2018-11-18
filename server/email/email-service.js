@@ -1,6 +1,6 @@
-const config = require("../config")
+const config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config");
 const nodemailer = require("nodemailer");
-
+console.log("Config", config)
 const transporter = nodemailer.createTransport({
     host: config.email.host,
     port: config.email.port,

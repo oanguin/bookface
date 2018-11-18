@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test tape test/**/*.js | tap-spec",
-    "start": "nodemon server/server"
+    "start": "nodemon NODE_ENV=prod server/server"
   },
   "repository": {
     "type": "git",

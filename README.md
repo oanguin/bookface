@@ -44,8 +44,8 @@ Your GitHub Classroom repository will be cloned on the due date (`Sunday, 7th Ap
 1. npm install tap-spec -g
 1. npm install tape -g
 2. npm install
-3. npm start
+3. npm run start
 4. Browse to localhost:3000
 
 ## Testing Application
-1. npm test
+1. npm run test

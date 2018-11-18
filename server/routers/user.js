@@ -3,7 +3,7 @@ var router = express.Router();
 var User = require("../models/user");
 var Security = require("../security/security");
 var sendEmail = require("../email/email-service")
-var config = require("../config")
+var config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config");
 
 User = User.methods(["get", "post", "put", "delete"]);
 User.before("post", EncryptPassword).before("put", EncryptPassword);
@@ -79,7 +79,7 @@ function SendEmail(req, res, next) {
     from: "Book Face <support@bookface.com>",
     to: res.locals.bundle.email,
     subject: "Complete Registration tp Bookface",
-    html: `<a href='${config.ip}:${config.port}/${res.locals.bundle.id}/registration'>Click to complete Registration</>`
+    html: `<a href='http://${config.ip}:${config.port}/user/registration?id=${res.locals.bundle.id}'>Click to complete Registration</>`
   }
 
   sendEmail(mailOptions, next);

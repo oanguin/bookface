@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var config = require("../config")
+const config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config");
 const fetch = require('node-fetch');
 
 const SERVER_URL = `http://${config.ip}:${config.port}/api/`
