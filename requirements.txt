@@ -11,6 +11,8 @@ NPM Packages Used:
     - plantuml (http://plantuml.com/, https://github.com/qjebbs/vscode-plantuml)
     - tape : Unit and Integration Testing (https://github.com/substack/tape)
     - MongoDB Online: (https://cloud.mongodb.com/v2/5bee8d39d5ec13e5c881617f#clusters/detail/BookFace)
+    - Email: (https://nodemailer.com/about/)
+    - Email-Test Server: (https://ethereal.email/create)
 Credits
     - Template from (https://www.free-css.com/free-css-templates/page228/beryllium)
 Minimum Requirements:
