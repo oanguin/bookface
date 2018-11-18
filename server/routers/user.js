@@ -2,11 +2,13 @@ var express = require("express");
 var router = express.Router();
 var User = require("../models/user");
 var Security = require("../security/security");
+var sendEmail = require("../email/email-service")
+var config = require("../config")
 
 User = User.methods(["get", "post", "put", "delete"]);
 User.before("post", EncryptPassword).before("put", EncryptPassword);
 User.after("get", removeSensitiveData)
-  .after("post", removeSensitiveData)
+  .after("post", [removeSensitiveData, SendEmail])
   .after("put", removeSensitiveData)
   .after("register", removeSensitiveData)
   .after("login", removeSensitiveData);
@@ -50,6 +52,7 @@ User.route("registration", {
 User.register(router, "/user");
 
 function removeSensitiveData(req, res, next) {
+  console.log('Removing sensitive data...')
   if (Array.isArray(res.locals.bundle)) {
     res.locals.bundle.forEach(element => {
       element.password = undefined;
@@ -70,5 +73,18 @@ function EncryptPassword(req, res, next) {
   next();
 }
 
-/*TODO has password before it reaches the database */
+function SendEmail(req, res, next) {
+  console.log('Sending Email')
+  let mailOptions = {
+    from: "Book Face <support@bookface.com>",
+    to: res.locals.bundle.email,
+    subject: "Complete Registration tp Bookface",
+    html: `<a href='${config.ip}:${config.port}/${res.locals.bundle.id}/registration'>Click to complete Registration</>`
+  }
+
+  sendEmail(mailOptions, next);
+
+}
+
+
 module.exports = router;

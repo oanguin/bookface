@@ -4,7 +4,7 @@ var app = require("../server/server");
 
 let CREATED_USER_ID = null;
 let CREATED_USER_PASSWORD = "123456";
-let CREATED_USER_EMAIL = "testuser@email.com";
+let CREATED_USER_EMAIL = "znwktha4cnujtvzd@ethereal.email";
 
 test("GET /user", function (assert) {
   request(app)
