@@ -130,3 +130,13 @@ test("LOGIN /user/:id/registration", assert => {
       assert.end();
     });
 });
+
+test("DELETE /user/:id", assert => {
+  request(app)
+    .delete(`/api/user/${CREATED_USER_ID}`)
+    .expect(204)
+    .end((err, res) => {
+      assert.error(err, "No error");
+      assert.end();
+    });
+});
