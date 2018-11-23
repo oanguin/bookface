@@ -1,14 +1,15 @@
+include ./create-user
 mixin login
     .gtco-section
         .gtco-container
             .row.gtco-heading
                 .col-lg-11.col-centered
-                    h2 Please Enter Your Credentials
+                    h2 Please Enter Details
                     if error
                         h3(class="error")= error
             .row
                 .col-lg-11.col-centered
-                    form(action="/login" method="POST")
+                    form(action="/user/login" method="POST" id="formLogin")
                         .form-group
                             label(for='user_name') User Name:
                             input(type="text" name="user_name" class="form-control" placeholder="User Name")
@@ -17,4 +18,8 @@ mixin login
                             input(type="password" name="password" class="form-control" placeholder="Password")
                         .form-group
                             input(type="submit" class="btn btn btn-special" value="Login")
+                    +create-user
+                    input(type="button" class="btn btn btn-special" value="Create User" onClick="toggleLoginUser()")
+
+
 

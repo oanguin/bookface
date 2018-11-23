@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config");
 const fetch = require('node-fetch');
+const msgs = require('../config/messages');
 
 const SERVER_URL = `http://${config.ip}:${config.port}/api/`
 router.post("/login", (req, response, next) => {
@@ -35,6 +36,28 @@ router.post("/login", (req, response, next) => {
             console.log("Login Error", error)
             response.render("index");
         });
-})
+});
+
+router.post("/create", (req, res) => {
+    fetch(`${SERVER_URL}/user`, {
+            method: 'post',
+            body: JSON.stringify(req.body),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(data => data.json())
+        .then(result => {
+            res.render("index", {
+                message: msgs.USER_CREATED
+            });
+        }).catch(error => {
+            console.log("USER CREATION ERROR", error)
+            res.render("index", {
+                message: msgs.FAILED_TO_CREATE_USER
+            });
+        });
+
+});
 
 module.exports = router;

@@ -8,19 +8,20 @@ include ./mixins/features
 include ./mixins/footer
 include ./mixins/bottom-loader
 include ./mixins/login
+include ./mixins/messages
 
 +head
 .gtco-loader
 #page
+	+navigation
+	//+slider
+	+messages
 	if user
-		+navigation
-		//+slider
 		+top-books-slide
 		+news
 		+features
 		+footer
 	else
-		+navigation
 		+login
 		+footer
 +bottom-loader

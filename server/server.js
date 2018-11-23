@@ -53,7 +53,7 @@ app.use(
     //TODO change Test Cases to use Security Tokens for User related Queries
     //Then have exception list only for end points which do not need security.
     returned = returned || (req.originalUrl.indexOf('login') > 0) ||
-      (req.originalUrl.indexOf('api/user') > 0);
+      (req.originalUrl.indexOf('user') > 0);
     return returned;
   })
 );
@@ -123,7 +123,7 @@ app.use("/api", authors);
 app.use("/api", bookRouter);
 //app.use("/api", loginRouter);
 app.use("/api", userRouter);
-app.use("/", userController);
+app.use("/user", userController);
 /*END of End Point Routes*/
 
 /*START Views*/

@@ -1,0 +1,25 @@
+mixin create-user
+    form( action="/user/create" method="POST" id="formUser")
+        .form-group
+            label(for='first_name') First Name:
+            input(type="text" name="first_name" class="form-control" placeholder="First Name")
+        .form-group
+            label(for='middle_name') Middle Name:
+            input(type="text" name="middle_name" class="form-control" placeholder="Middle Name")
+        .form-group
+            label(for='last_name') Last Name:
+            input(type="text" name="last_name" class="form-control" placeholder="User Name")
+        .form-group
+            label(for='age') Age:
+            input(type="number" name="age" class="form-control" placeholder="Age")
+        .form-group
+            label(for='user_name') User Name:
+            input(type="text" name="user_name" class="form-control" placeholder="User Name")
+        .form-group
+            label(for='user_name') Email:
+            input(type="text" name="email" class="form-control" placeholder="Email")
+        .form-group
+            label(for='password') Password:
+            input(type="password" name="password" class="form-control" placeholder="Password")
+        .form-group
+            input(type="submit" class="btn btn btn-special" value="Save User")
