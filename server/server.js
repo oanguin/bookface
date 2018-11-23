@@ -17,7 +17,10 @@ methodOverride = require("method-override");
 var restful = require("node-restful");
 var loginRouter = require("./routers/login");
 var bookRouter = require("./routers/book");
-const config = process.env.NODE_ENV == "test" ? require("./config/config-test") : require("./config/config");
+const config =
+  process.env.NODE_ENV == "test"
+    ? require("./config/config-test")
+    : require("./config/config");
 const cookieParser = require("cookie-parser");
 var jwt = require("express-jwt");
 var unless = require("express-unless");
@@ -44,16 +47,18 @@ app.use(
         throw Error(USER_UNAUTHORIZED_ERROR_MESSAGE);
       }
     },
-    function (req, res) {
+    function(req, res) {
       res.render("/index");
     }
-  }).unless(function (req) {
+  }).unless(function(req) {
     var ext = path.extname(req.originalUrl);
     var returned = !!~config.authUrlExceptions.indexOf(ext);
     //TODO change Test Cases to use Security Tokens for User related Queries
     //Then have exception list only for end points which do not need security.
-    returned = returned || (req.originalUrl.indexOf('login') > 0) ||
-      (req.originalUrl.indexOf('user') > 0);
+    returned =
+      returned ||
+      req.originalUrl.indexOf("login") > 0 ||
+      req.originalUrl.indexOf("user") > 0;
     return returned;
   })
 );
@@ -76,7 +81,7 @@ app.set("views", `./client`);
 // log only 4xx and 5xx responses to console
 app.use(
   morgan("dev", {
-    skip: function (req, res) {
+    skip: function(req, res) {
       return res.statusCode < 400;
     }
   })
@@ -158,21 +163,32 @@ app.get("/show_authors", (req, res) => {
 
 /*Middleware to catch all errors which are not managed.
 Note that the signiture with the error at the beginning is needed. */
+app.use((req, res, next) => {
+  next({
+    status: 404,
+    message: "Not Found"
+  });
+});
+
 app.use((err, req, res, next) => {
-  console.log(`Error Caught.${err}`);
-  if (err.message == USER_UNAUTHORIZED_ERROR_MESSAGE) {
-    console.log(`Error Caught. Rendering Index`);
-    res.render("index");
-  } else {
-    console.log(`Error Caught. Rendering 503`);
-    res.statusCode = 503;
-    res.json(`Error: ${err}`);
+  console.log(`Error Caught. Rendering Index -> ${err.message}`);
+
+  if (err.status === 404) {
+    return res.status(400).render("index", {
+      messgages: "Sorry Page not found!"
+    });
   }
+
+  if (err.status === 500) {
+    return res.status(500).render("index");
+  }
+
+  return res.status(400).render("index");
 });
 
 /*Only start server if not running tests */
 if (require.main === module) {
-  app.listen(config.port, config.ip, function () {
+  app.listen(config.port, config.ip, function() {
     console.log(
       "Express server listening on %d, in %s mode",
       config.port,
