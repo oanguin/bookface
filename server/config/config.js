@@ -1,5 +1,5 @@
 module.exports = {
-  port: 8080,
+  port: 3000,
   ip: "localhost",
   secret: "secret should be read for environment variable",
   authUrlExceptions: [".jpg",

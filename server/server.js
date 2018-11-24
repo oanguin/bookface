@@ -18,9 +18,9 @@ var restful = require("node-restful");
 var loginRouter = require("./routers/login");
 var bookRouter = require("./routers/book");
 const config =
-  process.env.NODE_ENV == "test"
-    ? require("./config/config-test")
-    : require("./config/config");
+  process.env.NODE_ENV == "test" ?
+  require("./config/config-test") :
+  require("./config/config");
 const cookieParser = require("cookie-parser");
 var jwt = require("express-jwt");
 var unless = require("express-unless");
@@ -47,10 +47,10 @@ app.use(
         throw Error(USER_UNAUTHORIZED_ERROR_MESSAGE);
       }
     },
-    function(req, res) {
+    function (req, res) {
       res.render("/index");
     }
-  }).unless(function(req) {
+  }).unless(function (req) {
     var ext = path.extname(req.originalUrl);
     var returned = !!~config.authUrlExceptions.indexOf(ext);
     //TODO change Test Cases to use Security Tokens for User related Queries
@@ -81,7 +81,7 @@ app.set("views", `./client`);
 // log only 4xx and 5xx responses to console
 app.use(
   morgan("dev", {
-    skip: function(req, res) {
+    skip: function (req, res) {
       return res.statusCode < 400;
     }
   })
@@ -188,7 +188,7 @@ app.use((err, req, res, next) => {
 
 /*Only start server if not running tests */
 if (require.main === module) {
-  app.listen(config.port, config.ip, function() {
+  app.listen(process.env.PORT || config.port, config.ip, function () {
     console.log(
       "Express server listening on %d, in %s mode",
       config.port,
