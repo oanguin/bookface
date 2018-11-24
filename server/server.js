@@ -188,6 +188,7 @@ app.use((err, req, res, next) => {
 
 /*Only start server if not running tests */
 if (require.main === module) {
+  console.log("HEROKU PORT -> ", process.env.PORT)
   app.listen(process.env.PORT || config.port, config.ip, function () {
     console.log(
       "Express server listening on %d, in %s mode",
