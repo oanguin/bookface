@@ -52,3 +52,6 @@ Your GitHub Classroom repository will be cloned on the due date (`Sunday, 7th Ap
 
 ## Live Application on Heroku
 1. https://bookfaceapp.herokuapp.com/
+
+## Travis for Test Automation
+1. https://travis-ci.com/oanguin/bookface/jobs/160634230
