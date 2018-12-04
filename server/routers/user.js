@@ -78,7 +78,7 @@ function SendEmail(req, res, next) {
   let mailOptions = {
     from: "Book Face <support@bookface.com>",
     to: res.locals.bundle.email,
-    subject: "Complete Registration tp Bookface",
+    subject: "Complete Registration to Bookface",
     html: `<a href='http://${config.ip}:${config.port}/user/registration?id=${res.locals.bundle.id}'>Click to complete Registration</>`
   }
 

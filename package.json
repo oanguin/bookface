@@ -5,7 +5,8 @@
   "main": "server/server.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test tape test/**/*.js | tap-spec",
-    "start": "nodemon NODE_ENV=prod server/server"
+    "start": "nodemon NODE_ENV=prod server/server",
+    "deploy":"git push --mirror https://github.com/oanguin/bookface.git -f"
   },
   "repository": {
     "type": "git",
