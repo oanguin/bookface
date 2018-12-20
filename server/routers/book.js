@@ -10,17 +10,23 @@ Book.before('post', (req, res, next) => {
     console.log(req.body)
     let authors = []
     /*Generate Id for Objects Before Saving It*/
-    req.body.authors.forEach(element => {
-        element._id = mongoose.Types.ObjectId();
+    req.body.authors.forEach(author => {
+        author._id = mongoose.Types.ObjectId();
+        var doc = new Author(author);
+        doc.save();
+
     });
     req.body.authors;
     next();
 });
 
 Book.after('post', (req, res, next) => {
-    res.render('books', {
-        authors: res.locals.bundle.authors
+    Book.find({}).populate('authors').execute(function (error, data) {
+        res.render('books/books', {
+            books: data
+        })
     })
+
 });
 
 Book.register(router, '/book');

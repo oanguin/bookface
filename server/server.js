@@ -13,6 +13,7 @@ var userRouter = require("./routers/user");
 var userController = require("./controllers/user");
 var mongoose = require("mongoose");
 var Author = require("./models/author");
+var Book = require("./models/book");
 methodOverride = require("method-override");
 var restful = require("node-restful");
 var loginRouter = require("./routers/login");
@@ -137,8 +138,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/books", (req, res) => {
+  Book.find({}).populate('authors').exec(function (error, data) {
+    console.log(`Books Returned: ${data}`);
+    res.render("books/books", {
+      books: data
+    });
+  })
+});
+
+app.get("/addbook", (req, res) => {
   /*Add at least one author to book [{}]*/
-  res.render("books", {
+  res.render("books/addbook", {
     authors: [{}]
   });
 });

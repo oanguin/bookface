@@ -1,0 +1,14 @@
+mixin list-books(books)
+    .gtco-section
+        .gtco-container
+            .row
+                .col-lg-11.col-centered
+                    div.item
+                        if books
+                            each book in books
+                                div.gtco-item
+                                    h2=book.title
+                                    each author in book.authors
+                                        h5=author.last_name + "," + author.first_name
+                        else
+                            div No Books Found!

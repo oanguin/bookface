@@ -11,8 +11,11 @@ mixin navigation
                                 a(href='/') Home
                             li
                                 a(href='about.html') About
-                            li
+                            li.has-dropdown
                                 a(href='/books') Books
+                                ul.dropdown
+                                    li 
+                                        a(href='/addbook') Add Book
                             li.has-dropdown
                                 a(href='services.html') Services
                                 ul.dropdown
