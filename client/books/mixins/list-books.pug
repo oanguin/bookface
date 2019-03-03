@@ -10,5 +10,6 @@ mixin list-books(books)
                                     h2=book.title
                                     each author in book.authors
                                         h5=author.last_name + "," + author.first_name
+                                    a(href=`/book/${book.id}`) View
                         else
                             div No Books Found!

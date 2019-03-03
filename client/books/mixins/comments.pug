@@ -1,0 +1,12 @@
+mixin comments(comments)
+    .gtco-section
+        .gtco-container
+            .row
+                .col-lg-11.col-centered
+                    div.item
+                        if comments
+                            each comment in comments
+                                div=comment.comment
+                        else
+                            div No Comments
+                        

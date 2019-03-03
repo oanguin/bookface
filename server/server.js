@@ -138,10 +138,22 @@ app.get("/", (req, res) => {
 });
 
 app.get("/books", (req, res) => {
+  console.log("Here....");
   Book.find({}).populate('authors').exec(function (error, data) {
     console.log(`Books Returned: ${data}`);
     res.render("books/books", {
       books: data
+    });
+  })
+});
+
+app.get("/book/:id", (req, res) => {
+  console.log("Getting Book By ID");
+  console.log('Param ID', req.param('id'));
+  Book.findById(req.param('id')).populate('authors').exec(function (error, data) {
+    console.log(`Books Returned: ${data}`);
+    res.render(`books/book`, {
+      book: data
     });
   })
 });

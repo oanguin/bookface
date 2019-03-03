@@ -1,0 +1,15 @@
+//TODO:Finish Comment Section
+mixin add-comment(book)
+    .gtco-section
+        .gtco-container
+            .row
+                .col-lg-11.col-centered
+                    div.item
+                        form(action="/api/comment" method="POST")
+                            .form-group
+                                label(for='title') Book Title:
+                                input(type="text" name="id" class="form-control" placeholder="Book Id" value={book.id})
+                            .form-group
+                                input(type="submit" class="btn btn btn-special" value="Add Comment")
+                        
+                        
