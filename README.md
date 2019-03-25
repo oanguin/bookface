@@ -58,3 +58,11 @@ Your GitHub Classroom repository will be cloned on the due date (`Sunday, 7th Ap
 
 ## Deploy Application
 1. npm run deploy
+
+## Testing Endpoints With Postman
+1. You need to generate a `x-access-token` and place it in the header to make requests to the backend. The value can be retrieved by logging in with a user and checking the cookie values. You can place the value in a header filed titled `x-access-token`.
+
+## Login to application
+1. Test User
+  1. testuser@email.com
+  1. 123456

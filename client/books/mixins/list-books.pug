@@ -7,9 +7,13 @@ mixin list-books(books)
                         if books
                             each book in books
                                 div.gtco-item
-                                    h2=book.title
-                                    each author in book.authors
-                                        h5=author.last_name + "," + author.first_name
+                                    hr
+                                    h2=`${'Book Title: '} ${book.title}`
+                                    br
+                                    h3 Authors
+                                    each author,index in book.authors
+                                        h5= (index + 1) + '. ' + author.last_name + "," + author.first_name
                                     a(href=`/book/${book.id}`) View
+                                    hr
                         else
                             div No Books Found!

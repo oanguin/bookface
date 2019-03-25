@@ -18,6 +18,7 @@ methodOverride = require("method-override");
 var restful = require("node-restful");
 var loginRouter = require("./routers/login");
 var bookRouter = require("./routers/book");
+var commentRouter = require("./routers/comment");
 const config =
   process.env.NODE_ENV == "test" ?
   require("./config/config-test") :
@@ -130,6 +131,7 @@ app.use("/api", bookRouter);
 //app.use("/api", loginRouter);
 app.use("/api", userRouter);
 app.use("/user", userController);
+app.use("/api", commentRouter);
 /*END of End Point Routes*/
 
 /*START Views*/

@@ -10,6 +10,7 @@ include ../mixins/bottom-loader
 include ../mixins/create-book
 include ./mixins/book
 include ./mixins/comments
+include ./mixins/add-comment
 
 +head
 .gtco-loader
@@ -17,5 +18,6 @@ include ./mixins/comments
 	+navigation
 	+book(book)
 	+comments(comments)
+	+add-comment(book)
 	+footer
 +bottom-loader

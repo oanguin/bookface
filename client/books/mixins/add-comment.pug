@@ -7,8 +7,8 @@ mixin add-comment(book)
                     div.item
                         form(action="/api/comment" method="POST")
                             .form-group
-                                label(for='title') Book Title:
-                                input(type="text" name="id" class="form-control" placeholder="Book Id" value={book.id})
+                                input(type="hidden" name="book_id" class="form-control" value=book._id )
+                                input(type="text" name="comment" class="form-control" placeholder="Add a comment..." )
                             .form-group
                                 input(type="submit" class="btn btn btn-special" value="Add Comment")
                         
