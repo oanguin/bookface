@@ -12,6 +12,10 @@ var UserSchema = new mongoose.Schema({
     email: String,
     is_admin: Boolean,
     is_registered: Boolean,
+    favouriteBooks: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Book'
+    }],
     created_at: {
         type: Date,
         default: Date.now

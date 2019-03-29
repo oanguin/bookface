@@ -1,4 +1,4 @@
-mixin list-books(books)
+mixin list-books(books, users_favourites)
     .gtco-section
         .gtco-container
             .row
@@ -8,7 +8,12 @@ mixin list-books(books)
                             each book in books
                                 div.gtco-item
                                     hr
-                                    h2=`${'Book Title: '} ${book.title}`
+                                    h2
+ 
+                                        icon(class="ti-star favourite" style=`display:${users_favourites.indexOf(book._id) > -1 ? "" : "none"} ` name=`favourite-${book._id}` onclick=`removeFavouriteBook("${book._id}")`) 
+                                        icon(class="ti-star nonfavourite" style=`display:${users_favourites.indexOf(book._id) > -1 ? "none" : ""} ` name=`nonfavourite-${book._id}` onclick=`addFavouriteBook("${book._id}")`)
+                                        span=`${'Book Title: '} ${book.title}`
+                                        
                                     br
                                     h3 Authors
                                     each author,index in book.authors
@@ -17,3 +22,4 @@ mixin list-books(books)
                                     hr
                         else
                             div No Books Found!
+    script(src='/js/book_client.js')

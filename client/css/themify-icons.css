@@ -56,6 +56,28 @@
 .ti-star:before {
 	content: "\e60a";
 }
+.ti-star.favourite{
+    border-radius: 90%;
+    padding: 0.3em;
+	margin-right: 10px;
+	background-color: yellow;
+	content: "\e60a";
+	display: inline-flex;
+}
+.ti-star.favourite:hover{
+	background-color: red;
+}
+.ti-star.nonfavourite{
+    border-radius: 90%;
+    padding: 0.3em;
+	margin-right: 10px;
+	background-color: transparent;
+	content: "\e60a";
+	display: inline-flex;
+}
+.ti-star.nonfavourite:hover{
+	background-color: yellow;
+}
 .ti-spray:before {
 	content: "\e60b";
 }

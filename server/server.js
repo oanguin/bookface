@@ -13,6 +13,7 @@ var userRouter = require("./routers/user");
 var userController = require("./controllers/user");
 var mongoose = require("mongoose");
 var Author = require("./models/author");
+var User = require("./models/user");
 var Book = require("./models/book");
 methodOverride = require("method-override");
 var restful = require("node-restful");
@@ -21,8 +22,8 @@ var bookRouter = require("./routers/book");
 var commentRouter = require("./routers/comment");
 const config =
   process.env.NODE_ENV == "test" ?
-  require("./config/config-test") :
-  require("./config/config");
+    require("./config/config-test") :
+    require("./config/config");
 const cookieParser = require("cookie-parser");
 var jwt = require("express-jwt");
 var unless = require("express-unless");
@@ -49,7 +50,7 @@ app.use(
         throw Error(USER_UNAUTHORIZED_ERROR_MESSAGE);
       }
     },
-    function (req, res) {
+    function(req, res) {
       res.render("/index");
     }
   }).unless(function (req) {
@@ -140,11 +141,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/books", (req, res) => {
-  console.log("Here....");
   Book.find({}).populate('authors').exec(function (error, data) {
-    console.log(`Books Returned: ${data}`);
-    res.render("books/books", {
-      books: data
+    //Mark favourite books here.
+    var userFavouriteBooks;
+    User.findById(req.user._id, (err, doc) => {
+      userFavouriteBooks = doc.favouriteBooks;
+
+      console.log('Users Favourites', userFavouriteBooks)
+      res.render("books/books", {
+        books: data,
+        users_favourites: userFavouriteBooks
+      });
     });
   })
 });

@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var Book = require("../models/book")
+var Book = require("../models/book");
+var User = require("../models/user")
 var Author = require("../models/author")
 Book.methods(['get', 'post', 'put', 'delete']);
 var async = require('async');
@@ -27,6 +28,38 @@ Book.after('post', (req, res, next) => {
         })
     })
 
+});
+
+Book.route("mark-favourite", {
+    detail: true,
+    handler: (req, res) => {
+        let user = req.user;
+
+        const bookId = req.params.id;
+
+        User.findById(user._id, (err, doc) => {
+            doc.favouriteBooks.push(bookId);
+            doc.save();
+        }).then((result) => {
+            res.json({ "success": true, "favouriteBooks": result.favouriteBooks });
+        });
+    }
+});
+
+Book.route("unmark-favourite", {
+    detail: true,
+    handler: (req, res) => {
+        let user = req.user;
+
+        const bookId = req.params.id;
+
+        User.findById(user._id, (err, doc) => {
+            doc.favouriteBooks = doc.favouriteBooks.filter(item => item != bookId);
+            doc.save();
+        }).then((result) => {
+            res.json({ "success": true, "favouriteBooks": result.favouriteBooks });
+        });
+    }
 });
 
 Book.register(router, '/book');
