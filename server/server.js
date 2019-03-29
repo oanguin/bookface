@@ -52,6 +52,7 @@ app.use(
       }
     },
     function (req, res) {
+      console.log('Logged IN...')
       res.render("/index");
     }
   }).unless(function (req) {

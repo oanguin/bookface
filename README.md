@@ -64,5 +64,8 @@ Your GitHub Classroom repository will be cloned on the due date (`Sunday, 7th Ap
 
 ## Login to application
 1. Test User
-  1. testuser@email.com
+  1. user name: testuser@email.com
+  1. password: 123456
+1. Test Admin
+  1. adminuser
   1. 123456

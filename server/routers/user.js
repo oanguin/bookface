@@ -14,7 +14,7 @@ User.after("get", removeSensitiveData)
   .after("login", removeSensitiveData);
 
 User.route("login", (req, res, next) => {
-  //console.log("Trying to Login..", req.body);
+  console.log("Trying to Login..", req.body);
   User.findOne({
       user_name: req.body.user_name
     },
