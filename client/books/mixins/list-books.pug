@@ -10,8 +10,8 @@ mixin list-books(books, users_favourites)
                                     hr
                                     h2
  
-                                        icon(class="ti-star favourite" style=`display:${users_favourites.indexOf(book._id) > -1 ? "" : "none"} ` name=`favourite-${book._id}` onclick=`removeFavouriteBook("${book._id}")`) 
-                                        icon(class="ti-star nonfavourite" style=`display:${users_favourites.indexOf(book._id) > -1 ? "none" : ""} ` name=`nonfavourite-${book._id}` onclick=`addFavouriteBook("${book._id}")`)
+                                        icon(class="ti-star favourite" title="Remove Book from Favourites" style=`display:${users_favourites.indexOf(book._id) > -1 ? "" : "none"} ` name=`favourite-${book._id}` onclick=`removeFavouriteBook("${book._id}")`) 
+                                        icon(class="ti-star nonfavourite" title="Add Book to Favourites" style=`display:${users_favourites.indexOf(book._id) > -1 ? "none" : ""} ` name=`nonfavourite-${book._id}` onclick=`addFavouriteBook("${book._id}")`)
                                         span=`${'Book Title: '} ${book.title}`
                                         
                                     br

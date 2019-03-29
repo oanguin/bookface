@@ -16,7 +16,7 @@ User.after("get", removeSensitiveData)
 User.route("login", (req, res, next) => {
   //console.log("Trying to Login..", req.body);
   User.findOne({
-      email: "testuser@email.com"
+      user_name: req.body.user_name
     },
     (error, user) => {
       if (user && Security.isPasswordValid(req.body.password, user.password)) {

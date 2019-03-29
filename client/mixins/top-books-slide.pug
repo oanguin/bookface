@@ -1,4 +1,4 @@
-mixin top-books-slide
+mixin top-books-slide(books)
 	.gtco-section
 		.gtco-container
 			.row
@@ -7,66 +7,12 @@ mixin top-books-slide
 			.row
 				.col-md-12
 					.owl-carousel.owl-carousel-carousel
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_1.jpg', alt='')
-								h2
-									a(href='#') New York Arena
-								p.role New York
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_2.jpg', alt='')
-								h2
-									a(href='#') Eagle Park
-								p.role London
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_3.jpg', alt='')
-								h2
-									a(href='#') Nationals Park
-								p.role Paris, France
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_1.jpg', alt='')
-								h2
-									a(href='#') New York Arena
-								p.role New York
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_2.jpg', alt='')
-								h2
-									a(href='#') Eagle Park
-								p.role London
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_3.jpg', alt='')
-								h2
-									a(href='#') Nationals Park
-								p.role Paris, France
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_1.jpg', alt='')
-								h2
-									a(href='#') New York Arena
-								p.role New York
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_2.jpg', alt='')
-								h2
-									a(href='#') Eagle Park
-								p.role London
-						.item
-							.gtco-item
-								a(href='#')
-									img.img-responsive(src='/images/img_3.jpg', alt='')
-								h2
-									a(href='#') Nationals Park
-								p.role Paris, France
+						each book in books 
+							.item
+								.gtco-item
+									a(href=`/book/${book._id}`)
+										img.img-responsive(src='/images/img_1.jpg', alt='')
+									h2
+										span=book.title
+									each author in book.authors
+										div.role=`${author.last_name}, ${author.first_name}`

@@ -257,6 +257,13 @@
 }
 .ti-close:before {
 	content: "\e646";
+	color:pink;
+	margin-right: 1em;
+}
+
+.ti-close:hover {
+	content: "\e646";
+	background-color:red;
 }
 .ti-clip:before {
 	content: "\e647";

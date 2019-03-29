@@ -14,6 +14,7 @@ var userController = require("./controllers/user");
 var mongoose = require("mongoose");
 var Author = require("./models/author");
 var User = require("./models/user");
+var Comment = require("./models/comment");
 var Book = require("./models/book");
 methodOverride = require("method-override");
 var restful = require("node-restful");
@@ -22,8 +23,8 @@ var bookRouter = require("./routers/book");
 var commentRouter = require("./routers/comment");
 const config =
   process.env.NODE_ENV == "test" ?
-    require("./config/config-test") :
-    require("./config/config");
+  require("./config/config-test") :
+  require("./config/config");
 const cookieParser = require("cookie-parser");
 var jwt = require("express-jwt");
 var unless = require("express-unless");
@@ -50,7 +51,7 @@ app.use(
         throw Error(USER_UNAUTHORIZED_ERROR_MESSAGE);
       }
     },
-    function(req, res) {
+    function (req, res) {
       res.render("/index");
     }
   }).unless(function (req) {
@@ -137,7 +138,22 @@ app.use("/api", commentRouter);
 
 /*START Views*/
 app.get("/", (req, res) => {
-  res.render("index");
+  User.findOne({
+      _id: req.user._id
+    }).populate({
+      path: 'favouriteBooks',
+      populate: {
+        path: 'authors'
+      }
+    })
+    .then(user => {
+      console.log('returned user...', user.favouriteBooks);
+      res.render("index", {
+        user: user,
+        favouriteBooks: user.favouriteBooks
+      });
+    });
+
 });
 
 app.get("/books", (req, res) => {
@@ -159,12 +175,21 @@ app.get("/books", (req, res) => {
 app.get("/book/:id", (req, res) => {
   console.log("Getting Book By ID");
   console.log('Param ID', req.param('id'));
-  Book.findById(req.param('id')).populate('authors').exec(function (error, data) {
-    console.log(`Books Returned: ${data}`);
-    res.render(`books/book`, {
-      book: data
-    });
-  })
+  Book.findById(req.param('id')).populate('authors').then(book => {
+    return book;
+  }).then(book => {
+    Comment.find({
+      book: book
+    }).populate('authors').exec((error, comments) => {
+      console.log('Found Comments', comments);
+      res.render(`books/book`, {
+        book: book,
+        comments: comments
+      });
+    })
+  });
+
+
 });
 
 app.get("/addbook", (req, res) => {

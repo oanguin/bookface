@@ -1,13 +1,22 @@
-mixin comments(comments)
+- locals.test = 'test'
+mixin comments(comments, book, allowDelete)
     .gtco-section
         .gtco-container
             .row
                 .col-lg-11.col-centered
                     div.item
                         if comments
+                            h2 Comments
+                            script(src='/js/CommentClientUtil.js')
+                            script(type="text/javascript").
+                                 checkDeleteAllowance();
                             each comment in comments
-                                div=comment.comment
+                                div(id=comment._id)
+                                    icon(class="ti-close" onclick=`removeComment('${comment._id}');`)
+                                    span=comment.comment
+                                    
                         else
                             div No Comments
+                        
                         
                         

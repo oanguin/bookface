@@ -18,7 +18,9 @@ Comment.after('post', (req, res, next) => {
     Book.findById(req.body.book_id).populate('authors').then(book => {
         return book;
     }).then(book => {
-        Comment.find({}).populate('authors').exec((error, comments) => {
+        Comment.find({
+            book: book
+        }).populate('authors').exec((error, comments) => {
             console.log('Found Comments', comments);
             res.render(`books/book`, {
                 book: book,
