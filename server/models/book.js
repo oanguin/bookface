@@ -10,6 +10,7 @@ var BookSchema = new mongoose.Schema({
     }],
     title: String,
     pages: Number,
+    picture: String,
     created_at: {
         type: Date,
         default: Date.now

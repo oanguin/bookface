@@ -9,19 +9,22 @@ mixin create-book
                         h3(class="error")= error
             .row
                 .col-lg-11.col-centered
-                    form(action="/api/book" method="POST")
-                        .form-group
-                            label(for='title') Book Title:
-                            input(type="text" name="title" class="form-control" placeholder="Book Title")
-                        .form-group
-                            label(for='pages') Number of Pages:
-                            input(type="number" name="pages" class="form-control" placeholder="Number of Pages")
-                        .form-group
-                            input(type="button" class="btn btn btn-info" onclick="addAuthors();" value="Add Authors")
-                        .form-group.authors
-                            each author,index in authors
-                                +create-author(author,index)
-                        .form-group
-                            input(type="submit" class="btn btn btn-special" value="Add Book")
+                    .form-group
+                        label(for='title') Book Title:
+                        input(type="text" name="title" id="title" class="form-control" placeholder="Book Title")
+                    .form-group
+                        label(for='picture') Picture:
+                        input(type="file" name="picture" id="picture" class="form-control" placeholder="Book Picture")
+                    .form-group
+                        label(for='pages') Number of Pages:
+                        input(type="number" name="pages" id="pages" class="form-control" placeholder="Number of Pages")
+                    .form-group
+                        input(type="button" class="btn btn btn-info" onclick="addAuthors();" value="Add Authors")
+                    .form-group.authors
+                        each author,index in authors
+                            +create-author(author,index)
+                    .form-group
+                        input(type="submit" class="btn btn btn-special" value="Add Book" onclick="addBook()")
     head
         script(src='/js/author.js')
+        script(src='/js/book_client.js')

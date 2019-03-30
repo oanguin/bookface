@@ -36,6 +36,8 @@ const USER_UNAUTHORIZED_ERROR_MESSAGE = "User Unathorized";
 const app = express();
 app.use(cookieParser());
 
+var multer = require('multer')
+
 /*TODO make test cases work with authentication tokens... Then put this back */
 /*Parse token from request as needed. */
 app.use(
@@ -120,6 +122,28 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 app.use(morgan("dev"));
+
+/*Upload Files as needed */
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'client/images')
+  },
+  filename: function (req, file, cb) {
+    const extension = file.originalname.split('.').slice(-1)[0];
+    cb(null, file.fieldname + '-' + Date.now() + `.${extension}`);
+  }
+});
+var upload = multer({
+  storage: storage
+});
+
+app.post('/api/book', upload.single('picture'), function (req, res, next) {
+  console.log('File Upload...', req.file);
+  req.body.picture = req.file.filename
+  next();
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+});
 
 /*START Rest End Point Routes*/
 const AUTHOR = "authors";

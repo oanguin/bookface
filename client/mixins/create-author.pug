@@ -1,5 +1,5 @@
 mixin create-author(author,index)
-    .gtco-section
+    .gtco-section(name=`author` id=`${index}`)
         .gtco-container
             .row.gtco-heading
                 .col-lg-11.col-centered
@@ -10,7 +10,7 @@ mixin create-author(author,index)
                 .col-lg-11.col-centered
                     .form-group
                         label(for='first_name') First Name:
-                        input(type="text" name=`authors[${index}].[first_name]` class="form-control" placeholder="First Name")
+                        input(type="text" id="first_name" name=`authors[${index}].[first_name]` class="form-control" placeholder="First Name")
                     .form-group
                         label(for='last_name') Last Name:
-                        input(type="last_name" name=`authors[${index}].[last_name]` class="form-control" placeholder="Last Name")
+                        input(type="last_name" id="last_name" name=`authors[${index}].[last_name]` class="form-control" placeholder="Last Name")

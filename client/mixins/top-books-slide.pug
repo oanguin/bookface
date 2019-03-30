@@ -11,7 +11,7 @@ mixin top-books-slide(books)
 							.item
 								.gtco-item
 									a(href=`/book/${book._id}`)
-										img.img-responsive(src='/images/img_1.jpg', alt='')
+										img.img-responsive(src=`/images/${book.picture}`, alt='')
 									h2
 										span=book.title
 									each author in book.authors
