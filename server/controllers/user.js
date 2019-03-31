@@ -1,3 +1,5 @@
+var Comment = require("../models/comment");
+var Book = require("../models/book");
 var express = require("express");
 var router = express.Router();
 const config =
@@ -40,15 +42,33 @@ router.post("/login", (req, response, next) => {
           }
         })
         .then(user => {
-          console.log('returned user...', user.favouriteBooks);
-          response.render("index", {
-            user: user,
-            favouriteBooks: user.favouriteBooks
+          console.log('returned user before getting comments...', user);
+          Comment.find({
+            book: user.favouriteBooks
+          }, {
+            limit: 10
+          }).sort({
+            created_at: 'desc'
+          }).populate(['user', 'book']).select(['comment', 'created_at']).exec((error, comments) => {
+            console.log('returned comments...', comments);
+            console.log('returned user...', user.favouriteBooks);
+
+            Book.find({}, {
+              limit: 10
+            }).sort({
+              created_at: 'desc'
+            }).select(['title', 'picture', '_id']).exec((error, books) => {
+              response.render("index", {
+                user: user,
+                favouriteBooks: user.favouriteBooks,
+                latestComments: comments,
+                books: books
+              });
+            });
           });
         });
-      /*response.render("index", {
-        user: payload.body
-      });*/
+
+
     })
     .catch(error => {
       console.log("Login Error", error);
