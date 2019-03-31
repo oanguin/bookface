@@ -33,6 +33,7 @@ router.post("/login", (req, response, next) => {
       response.cookie("x_access_token", payload.xaccesstoken, {
         maxAge: 24 * 60 * 60 * 1000
       });
+      //TODO: Duplicate logic in server.js
       User.findOne({
           _id: payload.body._id
         }).populate({
