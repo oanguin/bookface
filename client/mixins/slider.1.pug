@@ -1,0 +1,13 @@
+include ../books/mixins/book
+
+mixin slider(books)
+    .gtco-container
+        .row
+            .col-md-12
+                .owl-carousel.owl-carousel-fullwidth
+                    each book in books
+                        .item
+                            a(href='#')
+                                +image(book.picture)
+                                .slider-copy
+                                    h2=`${book.title}`

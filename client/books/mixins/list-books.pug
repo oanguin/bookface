@@ -1,3 +1,5 @@
+include ./image
+
 mixin list-books(books, users_favourites)
     .gtco-section
         .gtco-container
@@ -15,6 +17,7 @@ mixin list-books(books, users_favourites)
                                         span=`${'Book Title: '} ${book.title}`
                                         
                                     br
+                                    +image(book.picture)
                                     h3 Authors
                                     each author,index in book.authors
                                         h5= (index + 1) + '. ' + author.last_name + "," + author.first_name

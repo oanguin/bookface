@@ -1,35 +1,14 @@
-mixin news
+mixin news(comments)
 	.gtco-section
 		.gtco-container
 			.row
 				.col-md-6.gtco-news
-					h2 News
+					h2 Latest Comments
 					ul
 						li
-							a(href='#')
-								span.post-date September 10, 2016
-								h3 Manila Bridge Re-construction
-								p
-						li
-							a(href='#')
-								span.post-date September 10, 2016
-								h3 Manila Bridge Re-construction
-								p
-						li
-							a(href='#')
-								span.post-date September 10, 2016
-								h3 Manila Bridge Re-construction
-								p
-					p
-						a.btn.btn-sm.btn-special(href='#') More News
-				// END News
-				.col-md-5.col-md-push-1.gtco-testimonials
-					h2 Testimonials
-					blockquote
-						p
-						p.author
-							cite &mdash; John Doe Dueller
-					blockquote
-						p
-						p.author
-							cite &mdash; John Doe Dueller
+							each comment in comments
+								a(href=`/book/${comment.book._id}`)
+									span.post-date=`${comment.created_at}`
+									h3=`Book Title: ${comment.book.title}`
+									h2=`${comment.comment}`
+									p=`Comment By: ${comment.user.last_name}, ${comment.user.first_name}`

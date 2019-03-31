@@ -1,3 +1,5 @@
+include ./image
+
 mixin book(book)
     .gtco-section
         .gtco-container
@@ -7,6 +9,7 @@ mixin book(book)
                         if book
                             div.gtco-item
                                 h2=book.title
+                                +image(book.picture)
                                 each author in book.authors
                                     h5=author.last_name + "," + author.first_name
 

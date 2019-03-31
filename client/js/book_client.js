@@ -57,7 +57,9 @@ function addBook() {
     formData.append('pages', bookPages);
     formData.append('authors', JSON.stringify(authors));
 
-    formData.append('picture', picture[0]);
+    if (picture.length > 0) {
+        formData.append('picture', picture[0]);
+    }
 
     //Do request
     fetch('/api/book', {

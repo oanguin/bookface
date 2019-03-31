@@ -11,9 +11,12 @@ mixin comments(comments, book, allowDelete)
                             script(type="text/javascript").
                                  checkDeleteAllowance();
                             each comment in comments
-                                div(id=comment._id)
+                                .col-md-5.col-md-push-1.gtco-testimonials
+                                blockquote(id=comment._id)
                                     icon(class="ti-close" onclick=`removeComment('${comment._id}');`)
-                                    span=comment.comment
+                                    p()=comment.comment
+                                    p(class='author')
+                                        cite=`Comment By: ${comment.user.last_name}, ${comment.user.first_name}`
                                     
                         else
                             div No Comments

@@ -14,11 +14,11 @@ include ./mixins/messages
 .gtco-loader
 #page
 	+navigation
-	//+slider
+	+slider(books)
 	+messages(messages)
 	if user
 		+top-books-slide(favouriteBooks)
-		+news
+		+news(latestComments)
 		+features
 		+footer
 	else

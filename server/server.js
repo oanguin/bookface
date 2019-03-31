@@ -139,7 +139,9 @@ var upload = multer({
 
 app.post('/api/book', upload.single('picture'), function (req, res, next) {
   console.log('File Upload...', req.file);
-  req.body.picture = req.file.filename
+  if (req.file) {
+    req.body.picture = req.file.filename
+  }
   next();
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
@@ -149,10 +151,7 @@ app.post('/api/book', upload.single('picture'), function (req, res, next) {
 const AUTHOR = "authors";
 //app.use(`/${AUTHOR}`, authors);
 //app.use(authors);
-/*var Resource = app.resource = restful.model('resource', Author)
-  .methods(['get', 'post', 'put', 'delete']);
 
-Resource.register(app, '/authors');*/
 app.use("/api", authors);
 app.use("/api", bookRouter);
 //app.use("/api", loginRouter);
@@ -172,10 +171,29 @@ app.get("/", (req, res) => {
       }
     })
     .then(user => {
-      console.log('returned user...', user.favouriteBooks);
-      res.render("index", {
-        user: user,
-        favouriteBooks: user.favouriteBooks
+      console.log('returned user before getting comments...', user);
+      Comment.find({
+        book: user.favouriteBooks
+      }, {
+        limit: 10
+      }).sort({
+        created_at: 'desc'
+      }).populate(['user', 'book']).select(['comment', 'created_at']).exec((error, comments) => {
+        console.log('returned comments...', comments);
+        console.log('returned user...', user.favouriteBooks);
+
+        Book.find({}, {
+          limit: 10
+        }).sort({
+          created_at: 'desc'
+        }).select(['title', 'picture', '_id']).exec((error, books) => {
+          res.render("index", {
+            user: user,
+            favouriteBooks: user.favouriteBooks,
+            latestComments: comments,
+            books: books
+          });
+        });
       });
     });
 
@@ -205,7 +223,7 @@ app.get("/book/:id", (req, res) => {
   }).then(book => {
     Comment.find({
       book: book
-    }).populate('authors').exec((error, comments) => {
+    }).populate('user').exec((error, comments) => {
       console.log('Found Comments', comments);
       res.render(`books/book`, {
         book: book,
