@@ -5,6 +5,7 @@ var app = require("../server/server");
 let CREATED_USER_ID = null;
 let CREATED_USER_PASSWORD = "123456";
 let CREATED_USER_EMAIL = "znwktha4cnujtvzd@ethereal.email";
+let CREATED_USER_NAME = "testuser";
 
 test("GET /user", function (assert) {
   request(app)
@@ -38,7 +39,7 @@ test("POST /user", function (assert) {
       first_name: "test_name",
       last_name: "test_last_name",
       middle_name: "test_middle_name",
-      user_name: "test_user_name",
+      user_name: CREATED_USER_NAME,
       age: 9,
       password: CREATED_USER_PASSWORD,
       email: CREATED_USER_EMAIL
@@ -102,7 +103,7 @@ test("LOGIN /user/login", assert => {
   request(app)
     .post(`/api/user/login`)
     .send({
-      email: CREATED_USER_EMAIL,
+      user_name: CREATED_USER_NAME,
       password: CREATED_USER_PASSWORD
     })
     .expect(200)

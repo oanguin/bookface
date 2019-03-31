@@ -19,6 +19,7 @@ User.route("login", (req, res, next) => {
       user_name: req.body.user_name
     },
     (error, user) => {
+      console.log('Login User', user);
       if (user && Security.isPasswordValid(req.body.password, user.password)) {
         res.setHeader(
           "x-access-token",
