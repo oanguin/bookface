@@ -211,6 +211,7 @@
 
 		var owl2 = $('.owl-carousel-fullwidth');
 		owl2.owlCarousel({
+			autoWidth: true,
 			items: 1,
 			loop: true,
 			margin: 20,

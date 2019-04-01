@@ -34,14 +34,15 @@ User.route("login", (req, res, next) => {
 });
 
 User.route("registration", {
-  detail: true,
   handler: function (req, res, next) {
-    //console.log("Register Mehtod...");
-    User.findById(req.params.id, (err, user) => {
+    console.log("Register Mehtod...", req.query);
+    User.findById(req.query.id, (err, user) => {
       if (user) {
         user.is_registered = true;
         user.save((err, updatedUser) => {
-          res.status(200).json(updatedUser);
+          res.render('index', {
+            messages: "Registration Successful. Please Login"
+          })
         });
       } else {
         res.status(404).send("User is not registered.");

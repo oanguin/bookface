@@ -1,0 +1,16 @@
+mixin latest-comments(comments)
+	.gtco-section
+		.gtco-container
+			.row
+				.col-md-6.gtco-news
+					h2 Latest Comments
+					ul
+						li
+							each comment in comments
+								div
+									span.post-date=`${comment.created_at}`
+									a(href=`/book/${comment.book._id}`)
+										h3=`Book Title: ${comment.book.title}`
+									h4=`${comment.comment}`
+									a(href=`/profile/${comment.user._id}`)
+										h5=`Comment By: ${comment.user.last_name}, ${comment.user.first_name}`

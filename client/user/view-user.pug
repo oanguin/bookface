@@ -1,0 +1,41 @@
+include ../mixins/author_list
+include ../mixins/head
+include ../mixins/navigation
+include ../mixins/slider
+include ../mixins/top-books-slide
+include ../mixins/latest-comments
+include ../mixins/features
+include ../mixins/footer
+include ../mixins/bottom-loader
+
++head
+.gtco-loader
+#page
+    +navigation
+    .gtco-section
+        .gtco-container
+            .row.gtco-heading
+                .col-lg-11.col-centered
+                    .form-group
+                        label(for='first_name') First Name:
+                        label(name="first_name")=`${user.first_name}`
+                    .form-group
+                        label(for='middle_name') Middle Name:
+                        label(name="middle_name")=` ${user.middle_name}`
+                    .form-group
+                        label(for='last_name') Last Name:
+                        label(name="last_name")=`${user.last_name}`
+                    .form-group
+                        label(for='age') Age:
+                        label(name="age")=`${user.age}`
+                    .form-group
+                        label(for='user_name') User Name:
+                        label(name="user_name")=`${user.user_name}`
+                    .form-group
+                        label(for='user_name') Email:
+                        label(name="email")=`${user.email}`
+                    .form-group
+                        label(for='created_at') First Time Using BookFace:
+                        label(name="created_at")=`${user.created_at}`
+    +footer
++bottom-loader

@@ -8,10 +8,10 @@ mixin book(book)
                     div.item
                         if book
                             div.gtco-item
-                                h2=book.title
+                                h1=book.title
                                 +image(book.picture)
                                 each author in book.authors
-                                    h5=author.last_name + "," + author.first_name
+                                    h3=author.last_name + "," + author.first_name
 
                         else
                             div No Book Found!

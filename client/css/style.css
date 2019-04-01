@@ -19,6 +19,19 @@ body {
   background: #fff;
 }
 
+label{
+  color: black;
+  padding-left: 0.5em;
+}
+
+h5{
+  color: #52d681 !important;
+}
+
+h5:hover{
+  color: #34a7bd !important;
+}
+
 #page {
   position: relative;
   overflow-x: hidden;
@@ -633,7 +646,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-bottom: 0;
 }
 .gtco-news ul li a:hover h3 {
-  color: #000;
+  color: #34a7bd !important;
 }
 
 .gtco-social-icons {
@@ -1145,6 +1158,7 @@ blockquote p > cite {
   -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
+  width: 20em;
 }
 .btn.btn-sm {
   padding: 10px 20px !important;

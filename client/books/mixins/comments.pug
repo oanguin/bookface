@@ -16,7 +16,8 @@ mixin comments(comments, book, allowDelete)
                                     icon(class="ti-close" onclick=`removeComment('${comment._id}');`)
                                     p()=comment.comment
                                     p(class='author')
-                                        cite=`Comment By: ${comment.user.last_name}, ${comment.user.first_name}`
+                                        a(href=`/profile/${comment.user._id}`)
+                                            cite=`Comment By: ${comment.user.last_name}, ${comment.user.first_name}`
                                     
                         else
                             div No Comments

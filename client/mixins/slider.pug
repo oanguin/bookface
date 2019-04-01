@@ -1,14 +1,19 @@
 include ../books/mixins/book
 
 mixin slider(books)
-    .gtco-container
-        .row
-            .col-md-12
-                .owl-carousel.owl-carousel-fullwidth
-                    if books
-                        each book in books
-                            .item
-                                a(href=`book/${book._id}`)
-                                    +image(book.picture,'width:100%;height:100%')
-                                    .slider-copy
-                                        h2=`${book.title}`
+    .gtco-section
+        .gtco-container
+            .row
+                .col-md-8.col-md-offset-2.gtco-heading.text-center
+                    h2 Most Recent Books Added to BookFace
+        .gtco-container
+            .row
+                .col-md-12
+                    .owl-carousel.owl-carousel-fullwidth
+                        if books
+                            each book in books
+                                .item
+                                    a(href=`book/${book._id}`)
+                                        +image(book.picture)
+                                        .slider-copy
+                                            h2=`${book.title}`

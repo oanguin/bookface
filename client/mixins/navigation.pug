@@ -9,36 +9,26 @@ mixin navigation
                         ul
                             li.active
                                 a(href='/') Home
-                            li
-                                a(href='about.html') About
                             li.has-dropdown
                                 a(href='/books') Books
                                 ul.dropdown
                                     li 
                                         a(href='/addbook') Add Book
                             li.has-dropdown
-                                a(href='services.html') Services
+                                a(href='#') User
                                 ul.dropdown
                                     li
-                                        a(href='#') Web Design
+                                        a(href='/profile') User Profile
                                     li
-                                        a(href='#') eCommerce
-                                    li
-                                        a(href='#') Branding
-                                    li
-                                        a(href='#') API
+                                        a(href='/logout') Log Out
                             li.has-dropdown
-                                a(href='#') Dropdown
+                                a(href='#') Admin
                                 ul.dropdown
                                     li
-                                        a(href='#') HTML5
+                                        a(href='/users') Users
                                     li
-                                        a(href='#') CSS3
+                                        a(href='/comments') Comments
                                     li
-                                        a(href='#') Sass
-                                    li
-                                        a(href='#') jQuery
+                                        a(href='/books') Books
                             li
-                                a(href='portfolio.html') Portfolio
-                            li
-                                a(href='contact.html') Contact
+                                a(href='/about') About

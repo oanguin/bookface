@@ -69,3 +69,6 @@ Your GitHub Classroom repository will be cloned on the due date (`Sunday, 7th Ap
 1. Test Admin
   1. adminuser
   1. 123456
+1. Next Test User
+  1. oanguin
+  1. 123456

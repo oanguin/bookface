@@ -1,0 +1,32 @@
+include ./mixins/head
+include ./mixins/navigation
+include ./mixins/footer
+include ./mixins/bottom-loader
+
++head
+.gtco-loader
+#page
+	+navigation
+	.gtco-section
+		.gtco-container
+			.row
+				.col-md-12
+					.owl-carousel.owl-carousel-carousel
+						.item
+							.gtco-staff
+								img.img-responsive(src='images/EF_Xmas_Party_2017_Dapper.jpeg', alt='')
+								h2 Oneal Anguin
+								p.role Solutions Architect
+								p
+								ul.fh5co-social
+									li
+										a(href='onealanguin@gmail.com')
+											i.icon-email
+									li
+										a(href='https://twitter.com/OAnguin')
+											i.icon-twitter
+									li
+										a(href='https://www.linkedin.com/in/oneal-anguin-661b7a100/')
+											i.icon-linkedin
+	+footer
++bottom-loader

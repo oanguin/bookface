@@ -1,5 +1,5 @@
-mixin image(picture,style)
+mixin image(picture)
     if picture != null
-        img.img-responsive(src=`/images/${picture}`, style=`${style}`,alt=`${picture}`)
+        img.img-responsive(src=`/images/${picture}`,alt=`${picture}`)
     else
-        img.img-responsive(src='/images/no-photo.svg',style=`${style}`, alt='no image')
+        img.img-responsive(src='/images/no-photo.svg', alt='no image')

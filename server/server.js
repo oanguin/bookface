@@ -17,8 +17,6 @@ var User = require("./models/user");
 var Comment = require("./models/comment");
 var Book = require("./models/book");
 methodOverride = require("method-override");
-var restful = require("node-restful");
-var loginRouter = require("./routers/login");
 var bookRouter = require("./routers/book");
 var commentRouter = require("./routers/comment");
 const config =
@@ -27,8 +25,6 @@ const config =
   require("./config/config");
 const cookieParser = require("cookie-parser");
 var jwt = require("express-jwt");
-var unless = require("express-unless");
-var url = require("url");
 var path = require("path");
 
 const USER_UNAUTHORIZED_ERROR_MESSAGE = "User Unathorized";
@@ -235,6 +231,11 @@ app.get("/book/:id", (req, res) => {
 
 });
 
+app.get("/logout", (req, res) => {
+  res.clearCookie("x_access_token");
+  res.render("/");
+});
+
 app.get("/addbook", (req, res) => {
   /*Add at least one author to book [{}]*/
   res.render("books/addbook", {
@@ -242,10 +243,38 @@ app.get("/addbook", (req, res) => {
   });
 });
 
-app.get("/test-template", (req, res) => {
-  res.render("test-template/index", {
-    data: authors
+app.get("/about", (req, res) => {
+  res.render("about", {
+    authors: [{}]
   });
+});
+
+app.get("/profile/:id", (req, res, next) => {
+  console.log('Getting profile with id')
+  const user_id = req.params.id && req.params.id !== '' ? req.params.id : req.user._id;
+  req.params.id = user_id;
+
+  ProcessProfile(req, res);
+});
+
+app.get("/profile", (req, res) => {
+  console.log('Getting Profile for user id...', req.user._id);
+  req.params.id = req.user._id;
+  ProcessProfile(req, res);
+});
+
+function ProcessProfile(req, res) {
+  User.findOne({
+    _id: req.params.id
+  }).then(user => {
+    res.render("user/view-user", {
+      user: user
+    });
+  });
+}
+
+app.get("/test-template", (req, res) => {
+  res.render("test-template/index", {});
 });
 
 app.get("/show_authors", (req, res) => {
