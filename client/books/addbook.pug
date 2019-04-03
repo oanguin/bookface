@@ -12,7 +12,7 @@ include ../mixins/create-book
 +head
 .gtco-loader
 #page
-	+navigation
+	+navigation(logged_in_user && logged_in_user.is_admin)
 	+create-book
 	+footer
 +bottom-loader

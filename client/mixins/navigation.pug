@@ -1,4 +1,4 @@
-mixin navigation
+mixin navigation(is_admin)
         nav.gtco-nav(role='navigation')
             .gtco-container
                 .row
@@ -14,6 +14,20 @@ mixin navigation
                                 ul.dropdown
                                     li 
                                         a(href='/addbook') Add Book
+                            if is_admin
+                                li.has-dropdown
+                                    a(href='#') Admin
+                                    ul.dropdown
+                                        li
+                                            a(href='/profiles') Users
+                                        li
+                                            a(href='/comments') Comments
+                                        li
+                                            a(href='/books') Books
+                                        li  
+                                            a(href='/diagrams') Diagrams
+                            li
+                                a(href='/about') About
                             li.has-dropdown
                                 a(href='#') User
                                 ul.dropdown
@@ -21,14 +35,3 @@ mixin navigation
                                         a(href='/profile') User Profile
                                     li
                                         a(href='/logout') Log Out
-                            li.has-dropdown
-                                a(href='#') Admin
-                                ul.dropdown
-                                    li
-                                        a(href='/users') Users
-                                    li
-                                        a(href='/comments') Comments
-                                    li
-                                        a(href='/books') Books
-                            li
-                                a(href='/about') About

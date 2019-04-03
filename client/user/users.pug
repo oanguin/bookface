@@ -1,0 +1,44 @@
+include ../mixins/author_list
+include ../mixins/head
+include ../mixins/navigation
+include ../mixins/slider
+include ../mixins/top-books-slide
+include ../mixins/latest-comments
+include ../mixins/features
+include ../mixins/footer
+include ../mixins/bottom-loader
+
++head
+.gtco-loader
+#page
+    +navigation(logged_in_user && logged_in_user.is_admin)
+    .gtco-section
+        .gtco-container
+            .row.gtco-heading
+                .col-lg-11.col-centered
+                    table(class="table table-striped")
+                        thead
+                            tr
+                                th
+                                    span ID
+                                th
+                                    span User Name
+                                th
+                                    span Users Full Name
+                                th
+                        tbody
+                            each u in users
+                                tr
+                                    td
+                                        span=u._id
+                                    td
+                                        span=u.user_name
+                                    td
+                                        span=`${u.last_name}, ${u.first_name}`
+                                    td
+                                        a(href=`/profile/${u._id}/edit`)="View"
+
+
+
+    +footer
++bottom-loader

@@ -1,4 +1,4 @@
-@startuml Database Diagram
+@startuml Database_Diagram
 class Author{
     String first_name
     String middle_name
@@ -30,32 +30,18 @@ class User{
     Date update_date
 }
 
-class Post{
-    Book book
-    User user
-    Comment[] comments
-    Date create_date
-    Date update_date
-}
-
 class Comment{
     String Comment
     User user
-    Date create_date
-    Date update_date
-}
-
-class Admin{
-    String user_name
-    String password
+    Book book
     Date create_date
     Date update_date
 }
 
 Book<|---*Author
-Post<|---Book
-Post<|---*Comment
-Post<|--- User
+Comment<|---Book
+Comment<|--- User
+
 
 @enduml
  

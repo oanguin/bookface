@@ -1,10 +1,5 @@
-include ./mixins/author_list
 include ./mixins/head
 include ./mixins/navigation
-include ./mixins/slider
-include ./mixins/top-books-slide
-include ./mixins/latest-comments
-include ./mixins/features
 include ./mixins/footer
 include ./mixins/bottom-loader
 
@@ -12,9 +7,12 @@ include ./mixins/bottom-loader
 .gtco-loader
 #page
 	+navigation(logged_in_user && logged_in_user.is_admin)
-	//+slider	
-	+top-books-slide
-	+news
-	+features
+	.gtco-section
+		.gtco-container
+			.row
+				.col-md-12
+					each diagram in diagrams
+						h2=diagram.title
+						img(src=`${diagram.url}`)
 	+footer
 +bottom-loader

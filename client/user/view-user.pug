@@ -11,31 +11,31 @@ include ../mixins/bottom-loader
 +head
 .gtco-loader
 #page
-    +navigation
+    +navigation(logged_in_user && logged_in_user.is_admin)
     .gtco-section
         .gtco-container
             .row.gtco-heading
                 .col-lg-11.col-centered
                     .form-group
                         label(for='first_name') First Name:
-                        label(name="first_name")=`${user.first_name}`
+                        label(name="first_name")=`${logged_in_user.first_name}`
                     .form-group
                         label(for='middle_name') Middle Name:
-                        label(name="middle_name")=` ${user.middle_name}`
+                        label(name="middle_name")=` ${logged_in_user.middle_name}`
                     .form-group
                         label(for='last_name') Last Name:
-                        label(name="last_name")=`${user.last_name}`
+                        label(name="last_name")=`${logged_in_user.last_name}`
                     .form-group
                         label(for='age') Age:
-                        label(name="age")=`${user.age}`
+                        label(name="age")=`${logged_in_user.age}`
                     .form-group
                         label(for='user_name') User Name:
-                        label(name="user_name")=`${user.user_name}`
+                        label(name="user_name")=`${logged_in_user.user_name}`
                     .form-group
                         label(for='user_name') Email:
-                        label(name="email")=`${user.email}`
+                        label(name="email")=`${logged_in_user.email}`
                     .form-group
                         label(for='created_at') First Time Using BookFace:
-                        label(name="created_at")=`${user.created_at}`
+                        label(name="created_at")=`${logged_in_user.created_at}`
     +footer
 +bottom-loader

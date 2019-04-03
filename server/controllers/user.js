@@ -60,7 +60,7 @@ router.post("/login", (req, response, next) => {
               created_at: 'desc'
             }).select(['title', 'picture', '_id']).exec((error, books) => {
               response.render("index", {
-                user: user,
+                logged_in_user: user,
                 favouriteBooks: user.favouriteBooks,
                 latestComments: comments,
                 books: books

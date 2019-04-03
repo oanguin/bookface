@@ -6,7 +6,7 @@ include ./mixins/bottom-loader
 +head
 .gtco-loader
 #page
-	+navigation
+	+navigation(logged_in_user && logged_in_user.is_admin)
 	.gtco-section
 		.gtco-container
 			.row
@@ -14,7 +14,7 @@ include ./mixins/bottom-loader
 					.owl-carousel.owl-carousel-carousel
 						.item
 							.gtco-staff
-								img.img-responsive(src='images/EF_Xmas_Party_2017_Dapper.jpeg', alt='')
+								img(src='images/EF_Xmas_Party_2017_Dapper.jpeg', alt='')
 								h2 Oneal Anguin
 								p.role Solutions Architect
 								p

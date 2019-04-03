@@ -12,10 +12,6 @@ var authors = require("./routers/authors");
 var userRouter = require("./routers/user");
 var userController = require("./controllers/user");
 var mongoose = require("mongoose");
-var Author = require("./models/author");
-var User = require("./models/user");
-var Comment = require("./models/comment");
-var Book = require("./models/book");
 methodOverride = require("method-override");
 var bookRouter = require("./routers/book");
 var commentRouter = require("./routers/comment");
@@ -26,6 +22,7 @@ const config =
 const cookieParser = require("cookie-parser");
 var jwt = require("express-jwt");
 var path = require("path");
+const viewsRouter = require("./views/views");
 
 const USER_UNAUTHORIZED_ERROR_MESSAGE = "User Unathorized";
 
@@ -156,138 +153,8 @@ app.use("/user", userController);
 app.use("/api", commentRouter);
 /*END of End Point Routes*/
 
-/*START Views*/
-app.get("/", (req, res) => {
-  User.findOne({
-      _id: req.user._id
-    }).populate({
-      path: 'favouriteBooks',
-      populate: {
-        path: 'authors'
-      }
-    })
-    .then(user => {
-      console.log('returned user before getting comments...', user);
-      Comment.find({
-        book: user.favouriteBooks
-      }, {
-        limit: 10
-      }).sort({
-        created_at: 'desc'
-      }).populate(['user', 'book']).select(['comment', 'created_at']).exec((error, comments) => {
-        console.log('returned comments...', comments);
-        console.log('returned user...', user.favouriteBooks);
-
-        Book.find({}, {
-          limit: 10
-        }).sort({
-          created_at: 'desc'
-        }).select(['title', 'picture', '_id']).exec((error, books) => {
-          res.render("index", {
-            user: user,
-            favouriteBooks: user.favouriteBooks,
-            latestComments: comments,
-            books: books
-          });
-        });
-      });
-    });
-
-});
-
-app.get("/books", (req, res) => {
-  Book.find({}).populate('authors').exec(function (error, data) {
-    //Mark favourite books here.
-    var userFavouriteBooks;
-    User.findById(req.user._id, (err, doc) => {
-      userFavouriteBooks = doc.favouriteBooks;
-
-      console.log('Users Favourites', userFavouriteBooks)
-      res.render("books/books", {
-        books: data,
-        users_favourites: userFavouriteBooks
-      });
-    });
-  })
-});
-
-app.get("/book/:id", (req, res) => {
-  console.log("Getting Book By ID");
-  console.log('Param ID', req.param('id'));
-  Book.findById(req.param('id')).populate('authors').then(book => {
-    return book;
-  }).then(book => {
-    Comment.find({
-      book: book
-    }).populate('user').exec((error, comments) => {
-      console.log('Found Comments', comments);
-      res.render(`books/book`, {
-        book: book,
-        comments: comments
-      });
-    })
-  });
-
-
-});
-
-app.get("/logout", (req, res) => {
-  res.clearCookie("x_access_token");
-  res.render("/");
-});
-
-app.get("/addbook", (req, res) => {
-  /*Add at least one author to book [{}]*/
-  res.render("books/addbook", {
-    authors: [{}]
-  });
-});
-
-app.get("/about", (req, res) => {
-  res.render("about", {
-    authors: [{}]
-  });
-});
-
-app.get("/profile/:id", (req, res, next) => {
-  console.log('Getting profile with id')
-  const user_id = req.params.id && req.params.id !== '' ? req.params.id : req.user._id;
-  req.params.id = user_id;
-
-  ProcessProfile(req, res);
-});
-
-app.get("/profile", (req, res) => {
-  console.log('Getting Profile for user id...', req.user._id);
-  req.params.id = req.user._id;
-  ProcessProfile(req, res);
-});
-
-function ProcessProfile(req, res) {
-  User.findOne({
-    _id: req.params.id
-  }).then(user => {
-    res.render("user/view-user", {
-      user: user
-    });
-  });
-}
-
-app.get("/test-template", (req, res) => {
-  res.render("test-template/index", {});
-});
-
-app.get("/show_authors", (req, res) => {
-  Author.find((error, authors) => {
-    console.log("Authors Found Really:" + authors);
-    if (error) next(error);
-    else
-      res.render("index", {
-        data: authors
-      });
-  });
-});
-/*End of Views */
+//Views
+app.use("/", viewsRouter)
 
 /*Middleware to catch all errors which are not managed.
 Note that the signiture with the error at the beginning is needed. */

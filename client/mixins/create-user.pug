@@ -1,25 +1,29 @@
-mixin create-user
+mixin create-user(user,test)
     form( action="/user/create" method="POST" id="formUser")
         .form-group
             label(for='first_name') First Name:
-            input(type="text" name="first_name" class="form-control" placeholder="First Name")
+            input(type="text" name="first_name" class="form-control" value=`${user ? user.first_name : ''}` placeholder="First Name")
         .form-group
             label(for='middle_name') Middle Name:
-            input(type="text" name="middle_name" class="form-control" placeholder="Middle Name")
+            input(type="text" name="middle_name" class="form-control" value=`${user ? user.middle_name : ''}` placeholder="Middle Name")
         .form-group
             label(for='last_name') Last Name:
-            input(type="text" name="last_name" class="form-control" placeholder="Last Name")
+            input(type="text" name="last_name" class="form-control" value=`${user ? user.last_name : ''}` placeholder="Last Name")
         .form-group
             label(for='age') Age:
-            input(type="number" name="age" class="form-control" placeholder="Age")
+            input(type="number" name="age" class="form-control" value=`${user ? user.age : ''}` placeholder="Age")
         .form-group
             label(for='user_name') User Name:
-            input(type="text" name="user_name" class="form-control" placeholder="User Name")
+            input(type="text" name="user_name" class="form-control" value=`${user ? user.user_name : ''}` placeholder="User Name")
         .form-group
             label(for='user_name') Email:
-            input(type="text" name="email" class="form-control" placeholder="Email")
+            input(type="text" name="email" class="form-control" value=`${user ? user.email : ''}` placeholder="Email")
         .form-group
             label(for='password') Password:
-            input(type="password" name="password" class="form-control" placeholder="Password")
+            input(type="password" name="password" class="form-control" value=`${user ? user.password : ''}` placeholder="Password")
         .form-group
-            input(type="submit" class="btn btn btn-special" value="Save User")
+            if user
+                input(type="button" class="btn btn btn-special" value="Update User" onClick=`updateUser('${user._id}')`)
+            else
+                input(type="submit" class="btn btn btn-special" value="Save User")
+        script(src='/js/update-user.js')

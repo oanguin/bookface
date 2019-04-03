@@ -13,9 +13,9 @@ include ./mixins/messages
 +head
 .gtco-loader
 #page
-	+navigation
+	+navigation(logged_in_user && logged_in_user.is_admin)
 	+messages(messages)
-	if user
+	if logged_in_user
 		+slider(books)
 		+top-books-slide(favouriteBooks)
 		+latest-comments(latestComments)

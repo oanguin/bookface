@@ -8,7 +8,7 @@
   "[javascript]": {
     "editor.formatOnSave": true
   },
-  "plantuml.exportFormat": "png",
-  "plantuml.exportOutDir": "diagrams/out",
+  "plantuml.exportFormat": "svg",
+  "plantuml.exportOutDir": "/client/diagrams",
   "plantuml.diagramsRoot": "diagrams/src"
 }

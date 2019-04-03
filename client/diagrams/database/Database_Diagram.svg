@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="690px" preserveAspectRatio="none" style="width:292px;height:690px;" version="1.1" viewBox="0 0 292 690" width="292px" zoomAndPan="magnify"><defs><filter height="300%" id="f16xwelw2b6dfj" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--class Author--><rect fill="#FEFECE" filter="url(#f16xwelw2b6dfj)" height="125.7305" id="Author" style="stroke: #A80036; stroke-width: 1.5;" width="118" x="6" y="554"/><ellipse cx="42.6" cy="570" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M45.0731,576.1431 Q44.4921,576.4419 43.8529,576.5913 Q43.2138,576.7407 42.5082,576.7407 Q40.0014,576.7407 38.6815,575.0889 Q37.3617,573.437 37.3617,570.3159 Q37.3617,567.1865 38.6815,565.5347 Q40.0014,563.8828 42.5082,563.8828 Q43.2138,563.8828 43.8612,564.0322 Q44.5087,564.1816 45.0731,564.4805 L45.0731,567.2031 Q44.4423,566.6221 43.8488,566.3523 Q43.2553,566.0825 42.6244,566.0825 Q41.2797,566.0825 40.5949,567.1492 Q39.9101,568.2158 39.9101,570.3159 Q39.9101,572.4077 40.5949,573.4744 Q41.2797,574.541 42.6244,574.541 Q43.2553,574.541 43.8488,574.2712 Q44.4423,574.0015 45.0731,573.4204 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="38" x="61.4" y="574.5352">Author</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="123" y1="586" y2="586"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="92" x="12" y="600.6348">String first_name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="106" x="12" y="613.5898">String middle_name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="12" y="626.5449">String last_name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="60" x="12" y="639.5">Integer age</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="12" y="652.4551">Date create_date</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93" x="12" y="665.4102">Date update_date</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="123" y1="671.7305" y2="671.7305"/><!--class Book--><rect fill="#FEFECE" filter="url(#f16xwelw2b6dfj)" height="112.7754" id="Book" style="stroke: #A80036; stroke-width: 1.5;" width="109" x="10.5" y="281"/><ellipse cx="47.55" cy="297" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M50.0231,303.1431 Q49.4421,303.4419 48.8029,303.5913 Q48.1638,303.7407 47.4582,303.7407 Q44.9514,303.7407 43.6315,302.0889 Q42.3117,300.437 42.3117,297.3159 Q42.3117,294.1865 43.6315,292.5347 Q44.9514,290.8828 47.4582,290.8828 Q48.1638,290.8828 48.8112,291.0322 Q49.4587,291.1816 50.0231,291.4805 L50.0231,294.2031 Q49.3923,293.6221 48.7988,293.3523 Q48.2053,293.0825 47.5744,293.0825 Q46.2297,293.0825 45.5449,294.1492 Q44.8601,295.2158 44.8601,297.3159 Q44.8601,299.4077 45.5449,300.4744 Q46.2297,301.541 47.5744,301.541 Q48.2053,301.541 48.7988,301.2712 Q49.3923,301.0015 50.0231,300.4204 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28" x="66.45" y="301.5352">Book</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="11.5" x2="118.5" y1="313" y2="313"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="97" x="16.5" y="327.6348">Authors[] authors</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="55" x="16.5" y="340.5898">String title</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="16.5" y="353.5449">Integer pages</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="16.5" y="366.5">Date create_date</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93" x="16.5" y="379.4551">Date update_date</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="11.5" x2="118.5" y1="385.7754" y2="385.7754"/><!--class User--><rect fill="#FEFECE" filter="url(#f16xwelw2b6dfj)" height="190.5059" id="User" style="stroke: #A80036; stroke-width: 1.5;" width="127" x="154.5" y="242"/><ellipse cx="200.75" cy="258" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M203.2231,264.1431 Q202.6421,264.4419 202.0029,264.5913 Q201.3638,264.7407 200.6582,264.7407 Q198.1514,264.7407 196.8315,263.0889 Q195.5117,261.437 195.5117,258.3159 Q195.5117,255.1865 196.8315,253.5347 Q198.1514,251.8828 200.6582,251.8828 Q201.3638,251.8828 202.0112,252.0322 Q202.6587,252.1816 203.2231,252.4805 L203.2231,255.2031 Q202.5923,254.6221 201.9988,254.3523 Q201.4053,254.0825 200.7744,254.0825 Q199.4297,254.0825 198.7449,255.1492 Q198.0601,256.2158 198.0601,258.3159 Q198.0601,260.4077 198.7449,261.4744 Q199.4297,262.541 200.7744,262.541 Q201.4053,262.541 201.9988,262.2712 Q202.5923,262.0015 203.2231,261.4204 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="26" x="221.25" y="262.5352">User</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="155.5" x2="280.5" y1="274" y2="274"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="92" x="160.5" y="288.6348">String first_name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="106" x="160.5" y="301.5898">String middle_name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="160.5" y="314.5449">String last_name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="60" x="160.5" y="327.5">Integer age</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="94" x="160.5" y="340.4551">String user_name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="87" x="160.5" y="353.4102">String password</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63" x="160.5" y="366.3652">String email</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="115" x="160.5" y="379.3203">Boolean is_registered</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93" x="160.5" y="392.2754">Boolean is_admin</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="160.5" y="405.2305">Date create_date</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93" x="160.5" y="418.1855">Date update_date</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="155.5" x2="280.5" y1="424.5059" y2="424.5059"/><!--class Comment--><rect fill="#FEFECE" filter="url(#f16xwelw2b6dfj)" height="112.7754" id="Comment" style="stroke: #A80036; stroke-width: 1.5;" width="105" x="109.5" y="8"/><ellipse cx="132.6" cy="24" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M135.0731,30.1431 Q134.4921,30.4419 133.8529,30.5913 Q133.2138,30.7407 132.5082,30.7407 Q130.0014,30.7407 128.6815,29.0889 Q127.3617,27.437 127.3617,24.3159 Q127.3617,21.1865 128.6815,19.5347 Q130.0014,17.8828 132.5082,17.8828 Q133.2138,17.8828 133.8612,18.0322 Q134.5087,18.1816 135.0731,18.4805 L135.0731,21.2031 Q134.4423,20.6221 133.8488,20.3523 Q133.2553,20.0825 132.6244,20.0825 Q131.2797,20.0825 130.5949,21.1492 Q129.9101,22.2158 129.9101,24.3159 Q129.9101,26.4077 130.5949,27.4744 Q131.2797,28.541 132.6244,28.541 Q133.2553,28.541 133.8488,28.2712 Q134.4423,28.0015 135.0731,27.4204 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="148.4" y="28.5352">Comment</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="213.5" y1="40" y2="40"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="87" x="115.5" y="54.6348">String Comment</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="52" x="115.5" y="67.5898">User user</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="56" x="115.5" y="80.5449">Book book</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="115.5" y="93.5">Date create_date</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93" x="115.5" y="106.4551">Date update_date</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="213.5" y1="112.7754" y2="112.7754"/><!--link Book to Author--><path d="M65,414.3111 C65,451.2731 65,495.6602 65,533.4624 " fill="none" id="Book-Author" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="65,553.6972,69,547.6972,65,541.6972,61,547.6972,65,553.6972" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="58.0001,414.061,65,394.061,72.0001,414.061,58.0001,414.061" style="stroke: #A80036; stroke-width: 1.0;"/><!--link Comment to Book--><path d="M135.173,140.0029 C119.3796,184.4522 99.7263,239.7653 85.2393,280.5377 " fill="none" id="Comment-Book" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="128.6094,137.5679,141.9015,121.0658,141.8014,142.2552,128.6094,137.5679" style="stroke: #A80036; stroke-width: 1.0;"/><!--link Comment to User--><path d="M177.6484,140.786 C184.0705,172.0934 191.5767,208.6863 198.3617,241.7632 " fill="none" id="Comment-User" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="170.765,142.0645,173.6032,121.0658,184.4794,139.2512,170.765,142.0645" style="stroke: #A80036; stroke-width: 1.0;"/><!--
+@startuml Database_Diagram
+class Author{
+    String first_name
+    String middle_name
+    String last_name
+    Integer age
+    Date create_date
+    Date update_date
+}
+
+class Book{
+    Authors[] authors
+    String title
+    Integer pages
+    Date create_date  
+    Date update_date
+}
+
+class User{
+    String first_name
+    String middle_name
+    String last_name
+    Integer age
+    String user_name
+    String password
+    String email
+    Boolean is_registered
+    Boolean is_admin
+    Date create_date
+    Date update_date
+}
+
+class Comment{
+    String Comment
+    User user
+    Book book
+    Date create_date
+    Date update_date
+}
+
+Book<|- - -*Author
+Comment<|- - -Book
+Comment<|- - - User
+
+
+@enduml
+
+PlantUML version 1.2019.03(Sun Mar 10 11:04:44 GMT 2019)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 11+28
+Operating System: Mac OS X
+OS Version: 10.14.3
+Default Encoding: UTF-8
+Language: en
+Country: GB
+--></g></svg>
