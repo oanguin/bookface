@@ -1,4 +1,4 @@
-const config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config-prod");
+const config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config-production");
 const nodemailer = require("nodemailer");
 console.log("Config", config)
 const transporter = nodemailer.createTransport({
