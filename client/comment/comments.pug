@@ -1,0 +1,55 @@
+include ../mixins/author_list
+include ../mixins/head
+include ../mixins/navigation
+include ../mixins/slider
+include ../mixins/latest-comments
+include ../mixins/features
+include ../mixins/footer
+include ../mixins/bottom-loader
+
++head
+.gtco-loader
+#page
+    +navigation(logged_in_user && logged_in_user.is_admin, 'admin')
+    .gtco-section
+        .gtco-container
+            .row.gtco-heading
+                .col-lg-11.col-centered
+                    table(class="table table-striped")
+                        thead
+                            tr
+                                th
+                                    span ID
+                                th
+                                    span User Name
+                                th
+                                    span Book Title
+                                th
+                                    span Comment
+                                th
+                                    span Actions
+                        tbody
+                            each comment in comments
+                                tr(id=`row_${comment._id}`)
+                                    td
+                                        span=comment._id
+                                    td
+                                        span=comment.user.user_name
+                                    td
+                                        if comment.book
+                                            span=comment.book.title
+                                    td
+                                        span(id=`comment_span_${comment._id}`)=comment.comment
+                                        input(id=`comment_input_${comment._id}` style="display:none" value=comment.comment type="text")
+                                    td
+                                        div
+                                            icon(class="ti-save" title="save" id=`save_${comment._id}` style="display:none" onclick=`saveComment('${comment._id}');`)
+                                            icon(class="ti-hand-stop" title="cancel" id=`cancel_${comment._id}` style="display:none" onclick=`cancelEditComment('${comment._id}');`)
+                                            icon(class="ti-pencil" title="edit" id=`edit_${comment._id}` onclick=`editComment('${comment._id}');`)
+                                            icon(class="ti-trash" title="delete" id=`delete_${comment._id}` onclick=`deleteComment('${comment._id}');`)
+
+
+
+    +footer
++bottom-loader
+script(src='/comment/comments.js')

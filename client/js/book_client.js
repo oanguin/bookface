@@ -36,7 +36,7 @@ function addBook() {
     const authorDivs = $('div[name=author]');
     authorDivs.each((index, element) => {
         const lastName = $(element).find('input[id^=last_name]').val();
-        const firstName = $(element).find('input[id^=last_name]').val();
+        const firstName = $(element).find('input[id^=first_name]').val();
         authors.push({
             last_name: lastName,
             first_name: firstName
@@ -68,6 +68,50 @@ function addBook() {
     }).then(result => {
         console.log('Result', result);
         window.location.href = "/books";
+    }).catch(exception => {
+        console.log('Exception', exception);
+    });
+}
+
+function editBook(id) {
+    console.log('Edit Book Method')
+    //Build List of Authors
+    var authors = [];
+    const authorDivs = $('div[name=author]');
+    authorDivs.each((index, element) => {
+        const lastName = $(element).find('input[id^=last_name]').val();
+        const firstName = $(element).find('input[id^=first_name]').val();
+        authors.push({
+            last_name: lastName,
+            first_name: firstName
+        });
+    });
+
+    //Get Picture
+    var picture = $('#picture').prop('files');
+
+    //Get Book Title
+    var bookTitle = $('#title').val();
+
+    //Get Book Pages
+    var bookPages = $('#pages').val();
+
+    var formData = new FormData();
+    formData.append('title', bookTitle);
+    formData.append('pages', bookPages);
+    formData.append('authors', JSON.stringify(authors));
+
+    if (picture.length > 0) {
+        formData.append('picture', picture[0]);
+    }
+
+    //Do request
+    fetch(`/api/book/${id}`, {
+        method: "put",
+        body: formData
+    }).then(result => {
+        console.log('Result', result);
+        window.location.href = "/admin-books";
     }).catch(exception => {
         console.log('Exception', exception);
     });

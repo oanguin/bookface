@@ -1,4 +1,4 @@
-mixin navigation(is_admin)
+mixin navigation(is_admin, page)
         nav.gtco-nav(role='navigation')
             .gtco-container
                 .row
@@ -7,15 +7,15 @@ mixin navigation(is_admin)
                             a(href='/') BookFace
                     .col-xs-10.text-right.menu-1
                         ul
-                            li.active
+                            li(class=`${page == 'index' ? 'active': ''}`)
                                 a(href='/') Home
-                            li.has-dropdown
+                            li(class=`${page == 'book' ? 'active has-dropdown': 'has-dropdown'}`)
                                 a(href='/books') Books
                                 ul.dropdown
                                     li 
                                         a(href='/addbook') Add Book
                             if is_admin
-                                li.has-dropdown
+                                li(class=`${page == 'admin' ? 'active has-dropdown': 'has-dropdown'}`)
                                     a(href='#') Admin
                                     ul.dropdown
                                         li
@@ -23,12 +23,12 @@ mixin navigation(is_admin)
                                         li
                                             a(href='/comments') Comments
                                         li
-                                            a(href='/books') Books
+                                            a(href='/admin-books') Books
                                         li  
                                             a(href='/diagrams') Diagrams
-                            li
+                            li(class=`${page == 'about' ? 'active': ''}`)
                                 a(href='/about') About
-                            li.has-dropdown
+                            li(class=`${page == 'user' ? 'active has-dropdown': 'has-dropdown'}`)
                                 a(href='#') User
                                 ul.dropdown
                                     li

@@ -13,7 +13,7 @@ mixin comments(comments, book, allowDelete)
                             each comment in comments
                                 .col-md-5.col-md-push-1.gtco-testimonials
                                 blockquote(id=comment._id)
-                                    icon(class="ti-close" onclick=`removeComment('${comment._id}');`)
+                                    icon(class="ti-close" title="delete" onclick=`removeComment('${comment._id}');`)
                                     p()=comment.comment
                                     p(class='author')
                                         a(href=`/profile/${comment.user._id}`)

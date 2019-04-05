@@ -7,17 +7,12 @@ include ../mixins/latest-comments
 include ../mixins/features
 include ../mixins/footer
 include ../mixins/bottom-loader
-include ../mixins/create-book
-include ./mixins/book
-include ./mixins/comments
-include ./mixins/add-comment
+include ../mixins/edit-book
 
 +head
 .gtco-loader
 #page
 	+navigation(logged_in_user && logged_in_user.is_admin, 'book')
-	+book(book)
-	+comments(comments)
-	+add-comment(book)
+	+edit-book
 	+footer
-+bottom-loader
++bottom-loader 

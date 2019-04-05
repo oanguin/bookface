@@ -13,7 +13,7 @@ include ./mixins/messages
 +head
 .gtco-loader
 #page
-	+navigation(logged_in_user && logged_in_user.is_admin)
+	+navigation(logged_in_user && logged_in_user.is_admin, 'index')
 	+messages(messages)
 	if logged_in_user
 		+slider(books)

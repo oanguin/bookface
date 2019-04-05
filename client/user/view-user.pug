@@ -11,7 +11,7 @@ include ../mixins/bottom-loader
 +head
 .gtco-loader
 #page
-    +navigation(logged_in_user && logged_in_user.is_admin)
+    +navigation(logged_in_user && logged_in_user.is_admin, 'user')
     .gtco-section
         .gtco-container
             .row.gtco-heading

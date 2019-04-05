@@ -2,7 +2,6 @@ include ../mixins/author_list
 include ../mixins/head
 include ../mixins/navigation
 include ../mixins/slider
-include ../mixins/top-books-slide
 include ../mixins/latest-comments
 include ../mixins/features
 include ../mixins/footer
@@ -22,21 +21,28 @@ include ../mixins/bottom-loader
                                 th
                                     span ID
                                 th
-                                    span User Name
+                                    span Book Title
                                 th
-                                    span Users Full Name
+                                    span Created Date
                                 th
+                                    span Updated Date
+                                th
+                                    span Actions
                         tbody
-                            each u in users
+                            each book in books
                                 tr
                                     td
-                                        span=u._id
+                                        span=book._id
                                     td
-                                        span=u.user_name
+                                        span=book.title
                                     td
-                                        span=`${u.last_name}, ${u.first_name}`
+                                        span=book.created_at
                                     td
-                                        a(href=`/profile/${u._id}/edit`)="View"
+                                        span=book.updated_at
+                                    td
+                                        div
+                                            a(href=`book/${book._id}/edit`)
+                                                i.ti-link Edit
 
 
 

@@ -140,6 +140,16 @@ app.post('/api/book', upload.single('picture'), function (req, res, next) {
   // req.body will hold the text fields, if there were any
 });
 
+app.put('/api/book/:id', upload.single('picture'), function (req, res, next) {
+  console.log('File Upload in put...', req.file);
+  if (req.file) {
+    req.body.picture = req.file.filename
+  }
+  next();
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+});
+
 /*START Rest End Point Routes*/
 const AUTHOR = "authors";
 //app.use(`/${AUTHOR}`, authors);

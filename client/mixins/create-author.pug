@@ -10,7 +10,7 @@ mixin create-author(author,index)
                 .col-lg-11.col-centered
                     .form-group
                         label(for='first_name') First Name:
-                        input(type="text" id="first_name" name=`authors[${index}].[first_name]` class="form-control" placeholder="First Name")
+                        input(type="text" id="first_name" name=`authors[${index}].[first_name]` class="form-control" placeholder="First Name" value=author.first_name)
                     .form-group
                         label(for='last_name') Last Name:
-                        input(type="last_name" id="last_name" name=`authors[${index}].[last_name]` class="form-control" placeholder="Last Name")
+                        input(type="last_name" id="last_name" name=`authors[${index}].[last_name]` class="form-control" placeholder="Last Name"  value=author.last_name)

@@ -40,6 +40,11 @@
 }
 .ti-trash:before {
 	content: "\e605";
+	padding-left: 1em;
+}
+.ti-trash:hover {
+	color: red;
+	cursor: pointer;
 }
 .ti-thought:before {
 	content: "\e606";
@@ -111,6 +116,10 @@
 .ti-ruler-pencil:before {
 	content: "\e615";
 }
+.ti-pencil:hover {
+	color: green;
+	cursor: pointer;
+}
 .ti-ruler-alt:before {
 	content: "\e616";
 }
@@ -131,6 +140,7 @@
 }
 .ti-pencil:before {
 	content: "\e61c";
+	padding-left: 1em;
 }
 .ti-pencil-alt:before {
 	content: "\e61d";
@@ -209,6 +219,11 @@
 }
 .ti-hand-stop:before {
 	content: "\e636";
+	margin-left: 1em
+}
+.ti-hand-stop:hover {
+	color: orange;
+	cursor: pointer;
 }
 .ti-hand-open:before {
 	content: "\e637";
@@ -257,13 +272,12 @@
 }
 .ti-close:before {
 	content: "\e646";
-	color:pink;
 	margin-right: 1em;
 }
 
 .ti-close:hover {
-	content: "\e646";
-	background-color:red;
+	color:red;
+	cursor: pointer;
 }
 .ti-clip:before {
 	content: "\e647";
@@ -1032,6 +1046,11 @@
 }
 .ti-save:before {
 	content: "\e746";
+	padding-left: 1em;
+}
+.ti-save:hover {
+	color: blue;
+	cursor: pointer;
 }
 .ti-save-alt:before {
 	content: "\e747";

@@ -5,6 +5,7 @@ function addAuthors() {
     let count = $('div.form-group.authors').children().length
 
     $(cloneAuthorDiv).find('input.form-control').each((input, element) => {
+        $(element).val("");
         $(element).attr("name", $(element).attr("name").split('').map((value, index) => {
             if (!isNaN(value)) {
                 return count;

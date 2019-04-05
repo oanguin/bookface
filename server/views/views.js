@@ -44,6 +44,27 @@ router.get("/", (req, res) => {
 
 });
 
+router.get("/admin-books", (req, res) => {
+  Book.find().exec((error, books) => {
+    console.log('Admin Books', books);
+    res.render("books/admin-books", {
+      books: books,
+      logged_in_user: req.user
+    })
+  });
+});
+
+router.get("/book/:id/edit", (req, res) => {
+  Book.findById(req.param('id')).populate('authors').exec((error, book) => {
+    res.render("books/editbook", {
+      book: book,
+      authors: book.authors,
+      logged_in_user: req.user,
+      edit: true
+    })
+  });
+});
+
 router.get("/books", (req, res) => {
   Book.find({}).populate('authors').exec(function (error, data) {
     //Mark favourite books here.
@@ -100,6 +121,20 @@ router.get("/about", (req, res) => {
   res.render("about", {
     authors: [{}],
     logged_in_user: req.user
+  });
+});
+
+router.get("/comments", (req, res) => {
+  Comment.find().populate('user').populate('book').exec((error, comments) => {
+    console.log('Comments...', comments);
+    if (error) {
+      next(error);
+    } else {
+      res.render("comment/comments", {
+        comments: comments,
+        logged_in_user: req.user
+      });
+    }
   });
 });
 

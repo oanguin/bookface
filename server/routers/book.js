@@ -8,6 +8,7 @@ var async = require('async');
 var mongoose = require('mongoose');
 
 Book.before('post', (req, res, next) => {
+    console.log('BEFORE POST.....');
     req.body.authors = JSON.parse(req.body.authors);
     /*Generate Id for Objects Before Saving It*/
     req.body.authors.forEach(author => {
@@ -18,6 +19,21 @@ Book.before('post', (req, res, next) => {
     });
     next();
 });
+
+Book.before('put', (req, res, next) => {
+    console.log('BEFORE PUT.....');
+    req.body.authors = JSON.parse(req.body.authors);
+    /*Generate Id for Objects Before Updaing It if needed.*/
+    req.body.authors.forEach(author => {
+        if (!author._id) {
+            author._id = mongoose.Types.ObjectId();
+            var doc = new Author(author);
+            doc.save();
+        }
+    });
+    next();
+});
+
 
 Book.after('post', (req, res, next) => {
     Book.find({}).populate('authors').execute(function (error, data) {
@@ -45,6 +61,7 @@ Book.route("mark-favourite", {
         });
     }
 });
+
 
 Book.route("unmark-favourite", {
     detail: true,
