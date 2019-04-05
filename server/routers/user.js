@@ -3,7 +3,7 @@ var router = express.Router();
 var User = require("../models/user");
 var Security = require("../security/security");
 var sendEmail = require("../email/email-service")
-var config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config");
+const config = require(`../config/config-${process.env.NODE_ENV}`);
 
 User = User.methods(["get", "post", "put", "delete"]);
 User.before("post", EncryptPassword).before("put", EncryptPassword);

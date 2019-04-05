@@ -2,10 +2,7 @@ var Comment = require("../models/comment");
 var Book = require("../models/book");
 var express = require("express");
 var router = express.Router();
-const config =
-  process.env.NODE_ENV == "test" ?
-  require("../config/config-test") :
-  require("../config/config");
+const config = require(`../config/config-${process.env.NODE_ENV}`);
 const fetch = require("node-fetch");
 const msgs = require("../config/messages");
 var User = require("../models/user");

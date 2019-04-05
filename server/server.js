@@ -15,10 +15,7 @@ var mongoose = require("mongoose");
 methodOverride = require("method-override");
 var bookRouter = require("./routers/book");
 var commentRouter = require("./routers/comment");
-const config =
-  process.env.NODE_ENV == "test" ?
-  require("./config/config-test") :
-  require("./config/config");
+const config = require(`./config/config-${process.env.NODE_ENV}`);
 const cookieParser = require("cookie-parser");
 var jwt = require("express-jwt");
 var path = require("path");

@@ -1,6 +1,6 @@
 var bcryptjs = require("bcryptjs");
 var jwt = require("jsonwebtoken");
-const config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config");
+const config = process.env.NODE_ENV == "test" ? require("../config/config-test") : require("../config/config-prod");
 
 module.exports = {
   encrypt: function (value) {
