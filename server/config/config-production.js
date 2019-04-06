@@ -1,6 +1,6 @@
 module.exports = {
   port: process.env.PORT || 3000,
-  ip: "http://0.0.0.0",
+  ip: "0.0.0.0",
   server: "https://bookfaceapp.herokuapp.com",
   secret: "secret should be read for environment variable",
   authUrlExceptions: [".jpg",

@@ -1,6 +1,6 @@
 module.exports = {
   port: process.env.PORT || 3000,
-  ip: 'http://localhost',
+  ip: 'localhost',
   server: "http://localhost",
   secret: "secret should be read for environment variable",
   authUrlExceptions: [".jpg",
