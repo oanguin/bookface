@@ -51,7 +51,7 @@ User.route("registration", {
   }
 });
 
-User.register(router, "user");
+User.register(router, "/user");
 
 function removeSensitiveData(req, res, next) {
   console.log('Removing sensitive data...')
