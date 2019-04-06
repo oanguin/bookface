@@ -81,7 +81,7 @@ function SendEmail(req, res, next) {
     from: "Book Face <support@bookface.com>",
     to: res.locals.bundle.email,
     subject: "Complete Registration to Bookface",
-    html: `<a href='http://${config.ip}:${config.port}/user/registration?id=${res.locals.bundle.id}'>Click to complete Registration</>`
+    html: `<a href='http://${config.server}:${config.port}/user/registration?id=${res.locals.bundle.id}'>Click to complete Registration</>`
   }
 
   sendEmail(mailOptions, next);
