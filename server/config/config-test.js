@@ -2,6 +2,7 @@ module.exports = {
   port: 3000,
   ip: "localhost",
   server: "localhost",
+  emailurl: "http://localhost:3000",
   secret: "secret should be read for environment variable",
   authUrlExceptions: [".jpg",
     ".gif",
