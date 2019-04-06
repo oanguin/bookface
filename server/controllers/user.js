@@ -7,7 +7,7 @@ const fetch = require("node-fetch");
 const msgs = require("../config/messages");
 var User = require("../models/user");
 
-const SERVER_URL = `http://${config.server}:${config.port}/api/`;
+const SERVER_URL = `${config.server}:${config.port}/api/`;
 router.post("/login", (req, response, next) => {
   fetch(`${SERVER_URL}/user/login`, {
       method: "post",
